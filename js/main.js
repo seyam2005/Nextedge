@@ -1,48 +1,59 @@
+// ================= HERO RANDOM IMAGE =================
 const heroImg = document.getElementById("heroSlide");
 
 if (heroImg) {
   function loadRandomImage() {
-    const topics = [
-      "nature",
-      "mountains",
-      "city,night",
-      "technology",
-      "space",
-      "ocean",
-      "forest",
-      "sunset",
-      "architecture"
-    ];
+    const url = `https://picsum.photos/900/700?random=${Date.now()}`;
+    heroImg.style.opacity = "0";
 
-    const randomTopic = topics[Math.floor(Math.random() * topics.length)];
-    const url = `https://picsum.photos/900/700?random=${Math.random()}`;
-
-    heroImg.src = url;
+    setTimeout(() => {
+      heroImg.src = url;
+      heroImg.style.opacity = "1";
+    }, 300);
   }
 
-  // ✅ শুধু একবার load হবে
+  // page load এ একবার change
   loadRandomImage();
 }
 
 
-// ================= NAVBAR SHADOW =================
+// ================= MOBILE MENU =================
+function toggleMenu(){
+  const nav = document.getElementById("navMenu");
+  if(nav){
+    nav.classList.toggle("active");
+  }
+}
+
+
+// ================= NAVBAR SCROLL EFFECT =================
 window.addEventListener("scroll", () => {
   const nav = document.querySelector(".navbar");
-  if (nav) {
-    nav.style.boxShadow =
-      window.scrollY > 10 ? "0 4px 15px rgba(0,0,0,0.1)" : "none";
+
+  if (!nav) return;
+
+  if (window.scrollY > 20) {
+    nav.style.boxShadow = "0 8px 30px rgba(0,0,0,0.4)";
+    nav.style.backdropFilter = "blur(16px)";
+  } else {
+    nav.style.boxShadow = "none";
+    nav.style.backdropFilter = "blur(12px)";
   }
 });
 
+
 // ================= DARK MODE =================
 const toggleBtn = document.getElementById("darkToggle");
+
 if (toggleBtn) {
   toggleBtn.addEventListener("click", () => {
     document.body.classList.toggle("dark");
+
     toggleBtn.textContent =
       document.body.classList.contains("dark") ? "☀️" : "🌙";
   });
 }
+
 
 // ================= CATEGORY FILTER =================
 const links = document.querySelectorAll("nav a[data-filter]");
@@ -65,6 +76,7 @@ links.forEach(link => {
   });
 });
 
+
 // ================= IMAGE MODAL =================
 const modal = document.getElementById("imgModal");
 const modalImg = document.getElementById("modalImg");
@@ -86,14 +98,16 @@ if (closeBtn) {
 }
 
 window.onclick = e => {
-  if (e.target == modal) modal.style.display = "none";
+  if (e.target === modal) modal.style.display = "none";
 };
 
-// ================= SCROLL REVEAL =================
+
+// ================= SCROLL REVEAL ANIMATION =================
 function reveal() {
   document.querySelectorAll(".reveal").forEach(el => {
     const elementTop = el.getBoundingClientRect().top;
-    if (elementTop < window.innerHeight - 50) {
+
+    if (elementTop < window.innerHeight - 60) {
       el.classList.add("active");
     }
   });
@@ -102,7 +116,8 @@ function reveal() {
 window.addEventListener("scroll", reveal);
 reveal();
 
-// ================= SANITY FETCH =================
+
+// ================= SANITY FETCH (BLOG AUTO LOAD) =================
 const PROJECT_ID = "1u0762ms";
 const DATASET = "production";
 
@@ -117,6 +132,7 @@ async function fetchPosts() {
     const url = `https://${PROJECT_ID}.api.sanity.io/v2023-05-03/data/query/${DATASET}?query=${encodeURIComponent(query)}`;
     const res = await fetch(url);
     const data = await res.json();
+
     displayPosts(data.result);
     enableImageModal();
   } catch (err) {
@@ -137,7 +153,7 @@ function displayPosts(posts) {
 
     postEl.innerHTML = `
       <img src="${post.mainImage?.asset?.url || ""}" />
-      <h3>${post.title}</h3>
+      <p>${post.title}</p>
     `;
 
     container.appendChild(postEl);

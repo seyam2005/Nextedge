@@ -1,47 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NextEdge</title>
+
+  <!-- Google Font (Modern Look) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="css/style.css">
-
-
 </head>
+
 <body>
 
+<!-- ===== NAVBAR ===== -->
 <header class="navbar">
   <div class="logo">NextEdge</div>
-  <nav>
+
+  <nav id="navMenu">
     <a href="index.html">Main</a>
-    <a href="#">Bio-Data</a>
+    <a href="vlog.html">Vlog</a>
     <a href="photography.html">Photography</a>
     <a href="videography.html">Videography</a>
-    <a href="#">Uni Life</a>
-    <a href="#">Sports</a>
+    <a href="uni.html">Uni Life</a>
+    <a href="sports.html">Sports</a>
   </nav>
-  <button id="darkToggle">🌙</button>
+
+  <div class="nav-actions">
+    <button id="darkToggle">🌙</button>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  </div>
 </header>
 
+
+<!-- ===== HERO SECTION ===== -->
 <section class="hero">
+
   <div class="hero-text">
     <h1>Capture. Create. Chronicle.</h1>
-    <p>Vlogging, Photography, Videography, Campus Life & Sports — all from a Shahriar Seyam’s perspective.</p>
 
-    <button class="cta-button">Explore Now</button>
+    <p>
+      Vlogging, Photography, Videography, Campus Life & Sports —
+      all from Shahriar Seyam’s perspective.
+    </p>
 
+    <a href="photography.html" class="cta-button">Explore Now</a>
   </div>
 
   <div class="hero-slideshow">
-  <img id="heroSlide"
-       src="https://picsum.photos/900/700"
-       alt="Hero slideshow">
-</div>
+    <img id="heroSlide"
+         src="https://picsum.photos/900/700"
+         alt="Hero slideshow">
+  </div>
+
 </section>
+
+
+<!-- ===== FOOTER ===== -->
 <footer>
   © 2026 NextEdge | Powered by Shahriar Seyam
 </footer>
-<script src="js/main.js"></script>
 
+<script src="js/main.js"></script>
 </body>
 </html>
