@@ -19,14 +19,6 @@ body{
 body{
   scroll-behavior:auto;
 }
-body{
-  opacity:0;
-  transition:opacity .6s ease;
-}
-
-body.loaded{
-  opacity:1;
-}
 
 
 /* ===== NAVBAR (GLASS EFFECT) ===== */
