@@ -135,20 +135,7 @@ function displayPosts(posts) {
 fetchPosts();
 
 
-// ================= HERO PARALLAX =================
-const hero = document.querySelector(".hero");
-const heroText = document.querySelector(".hero-text");
-const heroSlideWrap = document.querySelector(".hero-slideshow");
 
-if (hero) {
-  hero.addEventListener("mousemove", e => {
-    const x = (window.innerWidth / 2 - e.clientX) / 30;
-    const y = (window.innerHeight / 2 - e.clientY) / 30;
-
-    if (heroText) heroText.style.transform = `translate(${x}px, ${y}px)`;
-    if (heroSlideWrap) heroSlideWrap.style.transform = `skewX(-12deg) translate(${-x}px, ${-y}px)`;
-  });
-}
 
 
 // ================= CURSOR LIGHT =================
