@@ -275,3 +275,117 @@ body { font-size: 16px; }
   .hero { flex-direction: row; text-align: left; }
   .hero-text h1 { font-size: 58px; }
 }
+/* ===== HERO TEXT GLOW ===== */
+.hero-text h1 {
+  background: linear-gradient(135deg, #38bdf8, #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 40px rgba(56,189,248,.35);
+}
+
+/* ===== FLOATING HERO IMAGE ===== */
+.hero-slideshow {
+  animation: floatHero 6s ease-in-out infinite;
+}
+
+@keyframes floatHero {
+  0%,100% { transform: skewX(-15deg) translateY(0); }
+  50% { transform: skewX(-15deg) translateY(-12px); }
+}
+a, button {
+  transition: all .25s ease;
+}
+
+a:active, button:active {
+  transform: scale(.96);
+}
+section {
+  position: relative;
+}
+
+section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top,
+    rgba(56,189,248,.08),
+    transparent 60%);
+  pointer-events: none;
+}
+.tool-grid div,
+.project-card {
+  transform-style: preserve-3d;
+}
+
+.tool-grid div:hover {
+  transform: translateY(-10px) rotateX(6deg);
+}
+.cursor-light {
+  position: fixed;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(56,189,248,.18),
+    transparent 70%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  filter: blur(10px);
+}
+
+@media (max-width: 900px) {
+  section {
+    padding: 70px 20px;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+}
+.reveal .tool-grid div,
+.reveal .project-card,
+.reveal ul li,
+.reveal .event {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.reveal.active .tool-grid div,
+.reveal.active .project-card,
+.reveal.active ul li,
+.reveal.active .event {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal.active .tool-grid div:nth-child(1) { transition-delay: .1s }
+.reveal.active .tool-grid div:nth-child(2) { transition-delay: .2s }
+.reveal.active .tool-grid div:nth-child(3) { transition-delay: .3s }
+.reveal.active .tool-grid div:nth-child(4) { transition-delay: .4s }
+.reveal.active .tool-grid div:nth-child(5) { transition-delay: .5s }
+/* GPU optimization */
+* {
+  will-change: transform, opacity;
+}
+/* ===== DEFAULT DARK THEME ===== */
+body {
+  background: linear-gradient(180deg, #020617, #0f172a);
+  color: #e2e8f0;
+}
+.navbar {
+  background: rgba(2,6,23,.8);
+}
+footer {
+  background: #0f172a;
+  color: #94a3b8;
+}
+body {
+  background: #020617;
+  color: #e2e8f0;
+}
+
+body.light {
+  background: #f8fafc;
+  color: #020617;
+}

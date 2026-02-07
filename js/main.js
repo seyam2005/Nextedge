@@ -35,16 +35,6 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// ================= DARK MODE =================
-const toggleBtn = document.getElementById("darkToggle");
-if (toggleBtn) {
-  toggleBtn.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-    toggleBtn.textContent =
-      document.body.classList.contains("dark") ? "☀️" : "🌙";
-  });
-}
-
 // ================= SCROLL REVEAL =================
 function reveal() {
   document.querySelectorAll(".reveal").forEach(el => {
@@ -87,29 +77,77 @@ if (canvas) {
     dy: (Math.random() - 0.5) * 0.3
   }));
 
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "rgba(56,189,248,0.25)";
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "rgba(56,189,248,0.25)";
 
-    particles.forEach(p => {
-      p.x += p.dx;
-      p.y += p.dy;
+  particles.forEach((p, i) => {
+    p.x += p.dx;
+    p.y += p.dy;
 
-      if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-      if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
 
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fill();
-    });
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fill();
 
-    requestAnimationFrame(animate);
-  }
+    // ✨ CONNECTION LINES (NOW SAFE)
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = p.x - particles[j].x;
+      const dy = p.y - particles[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < 120) {
+        ctx.strokeStyle = "rgba(56,189,248,0.08)";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.stroke();
+      }
+    }
+  });
+
+  requestAnimationFrame(animate);
+}
 
   animate();
 }
 
-// ================= PAGE LOAD FADE =================
-window.addEventListener("load", () => {
-  document.body.classList.add("loaded");
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtn = document.getElementById("darkToggle");
+  if (!toggleBtn) {
+    console.error("Dark toggle button not found!");
+    return;
+  }
+
+  const savedTheme = localStorage.getItem("theme");
+
+  function setTheme(theme) {
+    if (theme === "light") {
+      document.body.classList.add("light");
+      toggleBtn.textContent = "🌙";
+    } else {
+      document.body.classList.remove("light");
+      toggleBtn.textContent = "☀️";
+    }
+  }
+
+  // Load saved theme or system theme
+  if (savedTheme) {
+    setTheme(savedTheme);
+  } else {
+    const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+    setTheme(prefersLight ? "light" : "dark");
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    const isLight = document.body.classList.contains("light");
+    const newTheme = isLight ? "dark" : "light";
+    localStorage.setItem("theme", newTheme);
+    setTheme(newTheme);
+  });
 });
