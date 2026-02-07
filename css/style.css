@@ -265,3 +265,13 @@ footer {
     display: block;
   }
 }
+/* default styles = mobile */
+body { font-size: 16px; }
+.hero { flex-direction: column; text-align: center; }
+/* etc */
+
+/* desktop overrides */
+@media(min-width:901px){
+  .hero { flex-direction: row; text-align: left; }
+  .hero-text h1 { font-size: 58px; }
+}
