@@ -1,26 +1,22 @@
-index.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NextEdge</title>
-
-  <!-- Google Font (Modern Look) -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<!-- ===== NAVBAR ===== -->
+<div id="smooth-wrapper">
+<div id="smooth-content">
+
 <header class="navbar">
   <div class="cursor-light" id="cursorLight"></div>
 
   <div class="logo">NextEdge</div>
-
   <nav id="navMenu">
     <a href="index.html">Main</a>
     <a href="portfolio.html">Portfolio</a>
@@ -36,37 +32,90 @@ index.html
   </div>
 </header>
 
-
-<!-- ===== HERO SECTION ===== -->
 <section class="hero">
-
   <div class="hero-text">
     <h1>Capture. Create. Chronicle.</h1>
-
-    <p>
-      Portfolio, Photography, Videography, Campus Life & Sports —
-      all from Shahriar Seyam’s perspective.
-    </p>
-
+    <p>Portfolio, Photography, Videography, Campus Life & Sports — all from Shahriar Seyam’s perspective.</p>
     <a href="photography.html" class="cta-button">Explore Now</a>
   </div>
 
   <div class="hero-slideshow">
-    <img id="heroSlide"
-         src="https://picsum.photos/900/700"
-         alt="Hero slideshow">
+    <img id="heroSlide" src="https://picsum.photos/900/700" alt="Hero slideshow">
   </div>
-
 </section>
 
-<canvas id="particles"></canvas>
+<section class="tools reveal">
+  <h2>Creative Stack</h2>
+  <div class="tool-grid">
+    <div>🎨 Photoshop</div>
+    <div>💻 Web Development</div>
+    <div>📸 Photography</div>
+    <div>🎬 YouTube Creator</div>
+    <div>🧠 AI Prompt Design</div>
+  </div>
+</section>
 
-<!-- ===== FOOTER ===== -->
+<section class="connect reveal">
+  <h2>Connect With Me</h2>
+  <a href="#">Facebook</a>
+  <a href="#">LinkedIn</a>
+  <a href="#">YouTube</a>
+  <a href="#">GitHub</a>
+</section>
+
+<section class="projects reveal">
+  <div class="project-card">
+    <img src="https://picsum.photos/600/400" alt="NextEdge Portfolio Project">
+    <h3>NextEdge Portfolio</h3>
+    <p>Role: Designer + Developer</p>
+    <p>Tech: HTML • CSS • JS</p>
+  </div>
+</section>
+
+<section class="building reveal">
+  <h2>Currently Building</h2>
+  <ul>
+    <li>🚀 Personal Creative Portfolio System</li>
+    <li>🎬 YouTube Creative Vlog</li>
+    <li>🧠 AI Integrated Web Experiences</li>
+  </ul>
+</section>
+
+<section class="timeline reveal">
+  <div class="event">
+    <h3>First Day at EWU</h3>
+    <p>Beginning of creative journey</p>
+  </div>
+  <div class="event">
+    <h3>Club Activities</h3>
+    <p>Leadership & teamwork</p>
+  </div>
+</section>
+
+<section class="sports-profile reveal">
+  <h2>Athletic Side</h2>
+  <ul>
+    <li>⚽ Football</li>
+    <li>🏏 Cricket</li>
+    <li>🏆 Inter-university matches</li>
+  </ul>
+</section>
+
+<section class="studio reveal">
+  <h2>Visual Storytelling</h2>
+  <iframe width="100%" height="400" title="YouTube Video"
+    src="https://www.youtube.com/embed/VIDEOID"
+    allowfullscreen></iframe>
+</section>
+
 <footer>
   © 2026 NextEdge | Powered by Shahriar Seyam
 </footer>
 
+</div>
+</div>
+
+<canvas id="particles"></canvas>
 <script src="js/main.js"></script>
 </body>
 </html>
-
