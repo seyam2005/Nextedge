@@ -148,6 +148,63 @@ document.addEventListener("DOMContentLoaded", () => {
     const isLight = document.body.classList.contains("light");
     const newTheme = isLight ? "dark" : "light";
     localStorage.setItem("theme", newTheme);
-    setTheme(newTheme);
   });
+
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const loadText = document.getElementById("loadText");
+  const cursor = document.getElementById("cursorBar");
+  const welcomeText = document.getElementById("welcomeText");
+  const preloader = document.getElementById("preloader");
+  const capsule = document.querySelector(".capsule");
+
+  if (!loadText || !cursor || !welcomeText || !preloader || !capsule) return;
+
+  let percent = 0;
+
+  const loader = setInterval(() => {
+    percent++;
+    loadText.textContent = `LOADING ${percent}%`;
+
+    if (percent >= 100) {
+      clearInterval(loader);
+
+      // Freeze loading text at 100%
+      loadText.textContent = "LOADING 100%";
+
+      // Stop blinking for now
+      cursor.style.animation = "none";
+
+      // Move cursor smoothly left
+      const cursorMoveDuration = 1000; // 1s
+      const leftPadding = 10;
+      cursor.style.transition = `right ${cursorMoveDuration}ms cubic-bezier(0.65,0,0.35,1)`;
+      cursor.style.right = `${capsule.offsetWidth - leftPadding - cursor.offsetWidth}px`;
+
+      // Wait for cursor move to complete
+      setTimeout(() => {
+        // Hide loading text
+        loadText.style.transition = "opacity 0.3s";
+        loadText.style.opacity = "0";
+
+        // Reveal WELCOME text
+        welcomeText.style.transition = "clip-path 1s ease";
+        welcomeText.style.clipPath = "inset(0 0 0 0)";
+
+        // Restore blinking cursor near WELCOME
+        cursor.style.left = "10px";
+        cursor.style.right = "auto";
+        cursor.style.animation = "blink 0.7s infinite alternate";
+
+        // Fade out preloader after welcome animation
+        setTimeout(() => {
+          preloader.style.transition = "opacity 0.5s";
+          preloader.style.opacity = "0";
+          setTimeout(() => preloader.remove(), 500);
+        }, 800);
+      }, cursorMoveDuration);
+    }
+  }, 25);
 });

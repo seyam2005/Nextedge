@@ -1,4 +1,4 @@
-/* ================= RESET ================= */
+/* ================= css ================= */
 * {
   margin: 0;
   padding: 0;
@@ -279,6 +279,7 @@ body { font-size: 16px; }
 .hero-text h1 {
   background: linear-gradient(135deg, #38bdf8, #6366f1);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 0 40px rgba(56,189,248,.35);
 }
@@ -388,4 +389,72 @@ body {
 body.light {
   background: #f8fafc;
   color: #020617;
+}
+/* ===== FORCE HIDE SITE INITIALLY ===== */
+
+/* Preloader Fullscreen */
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+/* Capsule styling */
+.capsule {
+  position: relative;
+  width: 300px;
+  height: 60px;
+  background: linear-gradient(135deg, #020617, #0f172a);
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: monospace;
+  box-shadow: 0 0 30px rgba(56,189,248,0.5);
+}
+
+/* Text layers */
+.text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  letter-spacing: 2px;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.loading {
+  z-index: 1;
+}
+
+.welcome {
+  z-index: 2;
+  clip-path: inset(0 100% 0 0); /* hidden initially */
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Cursor */
+.cursor {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 14px; /* start at right edge */
+  width: 8px;
+  height: 70%;
+  background: #38bdf8;
+  border-radius: 4px;
+  animation: blink .7s infinite alternate;
+  z-index: 3;
+}
+
+@keyframes blink {
+  from { opacity: 0.2; }
+  to { opacity: 1; }
 }
