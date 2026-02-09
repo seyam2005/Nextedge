@@ -115,8 +115,6 @@ function animate() {
   animate();
 }
 
-
-
 document.addEventListener("DOMContentLoaded", () => {
   const toggleBtn = document.getElementById("darkToggle");
   if (!toggleBtn) {
@@ -152,59 +150,54 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-
+// ================= PRELOADER =================
 document.addEventListener("DOMContentLoaded", () => {
-  const loadText = document.getElementById("loadText");
-  const cursor = document.getElementById("cursorBar");
+  const preloader  = document.getElementById("preloader");
+  const loadText   = document.getElementById("loadText");
   const welcomeText = document.getElementById("welcomeText");
-  const preloader = document.getElementById("preloader");
-  const capsule = document.querySelector(".capsule");
+  const wipe       = document.getElementById("wipe");
 
-  if (!loadText || !cursor || !welcomeText || !preloader || !capsule) return;
+  if (!preloader || !loadText || !welcomeText || !wipe) {
+    console.error("Preloader elements missing");
+    if (preloader) preloader.style.display = "none";
+    return;
+  }
 
-  let percent = 0;
+  let progress = 0;
+  const target = 100;
+  const intervalTime = 20;   // ~3.2 sec full load — চাইলে 25-45 এর মধ্যে adjust
 
-  const loader = setInterval(() => {
-    percent++;
-    loadText.textContent = `LOADING ${percent}%`;
+  const interval = setInterval(() => {
+    progress++;
+    loadText.innerHTML = `LOADING ${progress}%<span class="cursor">▍</span>`;
 
-    if (percent >= 100) {
-      clearInterval(loader);
+    if (progress >= target) {
+      clearInterval(interval);
 
-      // Freeze loading text at 100%
-      loadText.textContent = "LOADING 100%";
-
-      // Stop blinking for now
-      cursor.style.animation = "none";
-
-      // Move cursor smoothly left
-      const cursorMoveDuration = 1000; // 1s
-      const leftPadding = 10;
-      cursor.style.transition = `right ${cursorMoveDuration}ms cubic-bezier(0.65,0,0.35,1)`;
-      cursor.style.right = `${capsule.offsetWidth - leftPadding - cursor.offsetWidth}px`;
-
-      // Wait for cursor move to complete
+      // 100% হতেই wipe শুরু (text cover করবে)
       setTimeout(() => {
-        // Hide loading text
-        loadText.style.transition = "opacity 0.3s";
-        loadText.style.opacity = "0";
+        wipe.style.width = "100%";          // বাম থেকে ডানে fill
+        // যদি RIGHT → LEFT চাও (ডান থেকে বামে আসা) তাহলে এই লাইন দুটো ব্যবহার করো:
+         wipe.style.right = "0";
+         wipe.style.left = "auto";
+         wipe.style.width = "100%";
+      }, 10);  // ছোট delay দিলে natural লাগে
 
-        // Reveal WELCOME text
-        welcomeText.style.transition = "clip-path 1s ease";
-        welcomeText.style.clipPath = "inset(0 0 0 0)";
+      // wipe animation শেষ হওয়ার পর welcome দেখানো
+      setTimeout(() => {
+        loadText.style.opacity = "0";                    // LOADING disappear
+        welcomeText.innerHTML = `<span class="cursor">▍</span>WELCOME`;
+        welcomeText.style.opacity = "1";
+      }, 800);  // wipe 1.2s + buffer
 
-        // Restore blinking cursor near WELCOME
-        cursor.style.left = "10px";
-        cursor.style.right = "auto";
-        cursor.style.animation = "blink 0.7s infinite alternate";
-
-        // Fade out preloader after welcome animation
+      // সব শেষে preloader fade out
+      setTimeout(() => {
+        preloader.style.transition = "opacity 0.9s ease";
+        preloader.style.opacity = "0";
         setTimeout(() => {
-          preloader.style.transition = "opacity 0.5s";
-          preloader.style.opacity = "0";
-          setTimeout(() => preloader.remove(), 500);
-        }, 800);
-      }, cursorMoveDuration);
+          preloader.style.display = "none";
+        }, 1000);
+      }, 3000);  // welcome 1.4s + buffer
     }
-  }, 25);
+  }, intervalTime);
 });
