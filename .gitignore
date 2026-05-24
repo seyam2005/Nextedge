@@ -1,5 +1,5 @@
-node_modules
-server/node_modules
-
+node_modules/
 .env
 server/.env
+server/node_modules/
+server/node_quickstart/node_modules/
