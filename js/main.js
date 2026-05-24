@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let progress = 0;
   const target = 100;
-  const intervalTime = 20;   // ~3.2 sec full load — চাইলে 25-45 এর মধ্যে adjust
+  const intervalTime = 15;   // ~3.2 sec full load — চাইলে 25-45 এর মধ্যে adjust
 
   const interval = setInterval(() => {
     progress++;
