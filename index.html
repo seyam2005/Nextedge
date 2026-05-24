@@ -18,6 +18,7 @@
 </head>
 
 <body>
+  <div class="mouse-glow"></div>
 <div id="preloader">
   <div class="capsule">
     <span class="text loading" id="loadText">
@@ -146,6 +147,55 @@
 <canvas id="particles"> </canvas>
 <script src="js/main.js"></script>
 </div>
+<!-- AI ASSISTANT -->
+
+<!-- AI ASSISTANT -->
+<div class="ai-orb" id="aiOrb">
+
+    <div class="orb-tooltip">
+        Ask NextEdge AI
+    </div>
+
+    <div class="orb-core"></div>
+
+</div>
+
+<div class="ai-panel" id="aiPanel">
+
+    <div class="ai-header">
+
+        <h3>NextEdge AI</h3>
+
+        <span id="closeAI">✕</span>
+
+    </div>
+
+    <div class="ai-chat" id="aiChat">
+
+        <div class="ai-message">
+           Initializing NextEdge AI...
+        </div>
+
+    </div>
+
+    <div class="ai-input-area">
+
+        <input type="text" id="userInput" placeholder="Ask something...">
+
+        <button id="sendBtn">
+            Send
+        </button>
+
+    </div>
+
+</div>
+
+<script src="js/ai-assistant.js"></script>
+<audio id="aiSound" preload="auto">
+
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=interface-124464.mp3" type="audio/mpeg">
+
+</audio>
 </body>
 
 </html>
