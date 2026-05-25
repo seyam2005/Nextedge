@@ -1031,5 +1031,33 @@ a:active, button:active {
   .welcome{
     font-size:14px;
   }
+  .ai-header{
+
+    padding:14px 16px;
+
+    position:sticky;
+    top:0;
+
+    background:rgba(5,8,22,.95);
+
+    z-index:5;
+  }
+
+  #closeAI{
+
+    width:34px;
+    height:34px;
+
+    font-size:20px;
+
+    flex-shrink:0;
+  }
+
+  .ai-chat{
+    padding:16px;
+  }
+
+  
+
 
 }
