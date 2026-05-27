@@ -2,46 +2,163 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Videography - NextEdge</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motion — Videography | NextEdge</title>
+  <meta name="description" content="Videography and YouTube creative content by Shahriar Seyam.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
 
-<header class="navbar">
-  <div class="logo">NextEdge</div>
-  <nav>
-    <a href="index.html" class="active">Vlog</a>
-    <a href="photography.html" class="active">Photography</a>
-    <a href="videography.html" class="active">Videography</a>
-    <a href="#">Uni Life</a>
-    <a href="#">Sports</a>
-  </nav>
-  <button id="darkToggle">🌙</button>
-</header>
+  <div class="mouse-glow" id="mouseGlow"></div>
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
 
-<section class="gallery">
-  <div class="card reveal"><img src="images/photo1.jpg"><p>Photo 1</p></div>
-  <div class="card reveal"><img src="images/photo2.jpg"><p>Photo 2</p></div>
-  <div class="card reveal"><img src="images/photo3.jpg"><p>Photo 3</p></div>
-  <div class="card reveal"><img src="images/photo4.jpg"><p>Photo 4</p></div>
-  <div class="card reveal"><img src="images/photo5.jpg"><p>Photo 5</p></div>
-  <div class="card reveal"><img src="images/photo6.jpg"><p>Photo 6</p></div>
-  <div class="card reveal">
-  <img src="https://res.cloudinary.com/ddygdkxbo/image/upload/v1769955923/WhatsApp_Image_2026-01-26_at_9.15.21_PM_gdemcm.jpg">
-  <p>New Photo</p>
-</div>
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose">✕</button>
+    <a href="index.html">Home</a>
+    <a href="photography.html">Lens</a>
+    <a href="videography.html" class="active">Motion</a>
+    <a href="sports.html">Arena</a>
+    <a href="unilife.html">Campus</a>
+  </div>
 
+  <canvas id="particles"></canvas>
 
-<!-- Image Modal -->
-<div id="imgModal" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="modalImg">
-</div>
+  <header class="navbar" id="navbar">
+    <div class="nav-left">
+      <a href="index.html" class="logo">NextEdge</a>
+    </div>
+    <nav id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="photography.html">Lens</a>
+      <a href="videography.html" class="active">Motion</a>
+      <a href="sports.html">Arena</a>
+      <a href="unilife.html">Campus</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="darkToggle">🌙</button>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+      <button class="menu-btn" id="menuBtn">☰</button>
+    </div>
+  </header>
 
-<footer>
-  © 2026 NextEdge | Created by Shahriar
-</footer>
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="hero-grid"></div>
+    <div class="page-hero-content reveal">
+      <div class="section-label">// Motion</div>
+      <h1 class="section-title">Visual<br><em>Storytelling</em></h1>
+      <div class="divider"></div>
+      <p class="page-hero-description">
+        Behind-the-scenes footage, creative vlogs, and campus life — captured and edited for the NextEdge YouTube channel.
+      </p>
+    </div>
+  </section>
 
-<script src="js/main.js"></script>
+  <!-- FEATURED VIDEO -->
+  <section class="featured-section">
+    <div class="section-label reveal">// Featured</div>
+    <h2 class="section-title reveal">Creative<br><em>Reel</em></h2>
+    <div class="divider reveal"></div>
+    <div class="video-wrap reveal">
+      <iframe
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        title="NextEdge Creative Reel"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <!-- VIDEO SERIES -->
+  <section class="series-section">
+    <div class="section-label reveal">// Series</div>
+    <h2 class="section-title reveal">Video<br><em>Series</em></h2>
+    <div class="divider reveal"></div>
+    <div class="projects-grid reveal">
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&q=80" alt="Vlog series">
+        <div class="project-info">
+          <h3>Campus Vlog Series</h3>
+          <p>Day-in-the-life documentation of student life at EWU — events, projects, and everyday moments.</p>
+          <div class="project-tag">YOUTUBE</div>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=600&q=80" alt="BTS">
+        <div class="project-info">
+          <h3>Behind the Scenes</h3>
+          <p>Raw, unfiltered behind-the-scenes of creative shoots, web builds, and campus projects.</p>
+          <div class="project-tag">BTS</div>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&q=80" alt="Music visuals">
+        <div class="project-info">
+          <h3>Creative Shorts</h3>
+          <p>Short-form experimental videos exploring visual aesthetics, mood, and motion design.</p>
+          <div class="project-tag">SHORTS</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section class="tools-section">
+    <div class="section-label reveal">// Workflow</div>
+    <h2 class="section-title reveal">Edit<br><em>Stack</em></h2>
+    <div class="divider reveal"></div>
+    <div class="tool-grid reveal">
+      <div>🎬<br><strong>Premiere Pro</strong><br><small>Primary video editing & colour work</small></div>
+      <div>🎵<br><strong>Audio Mixing</strong><br><small>Soundtrack & SFX layering</small></div>
+      <div>✨<br><strong>After Effects</strong><br><small>Motion graphics & visual effects</small></div>
+      <div>📱<br><strong>Mobile Capture</strong><br><small>Spontaneous, run-and-gun footage</small></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="foot-logo">NextEdge</span>
+    <span class="foot-copy">© 2026 Shahriar Seyam — All rights reserved</span>
+    <div class="foot-links">
+      <a href="photography.html">Lens</a>
+      <a href="videography.html">Motion</a>
+      <a href="sports.html">Arena</a>
+    </div>
+  </footer>
+
+  <div class="ai-orb" id="aiOrb">
+    <div class="orb-tooltip">Ask NextEdge AI</div>
+    <span class="ai-orb-icon">✦</span>
+  </div>
+  <div class="ai-panel" id="aiPanel">
+    <div class="ai-header">
+      <div class="ai-avatar">NE</div>
+      <div class="ai-header-info">
+        <h3>NextEdge AI</h3>
+        <div class="ai-status"><span class="ai-status-dot"></span>ONLINE</div>
+      </div>
+      <button id="closeAI">✕</button>
+    </div>
+    <div class="ai-chat" id="aiChat">
+      <div class="msg bot">Ask me about Shahriar's video work, editing process, or YouTube channel!</div>
+    </div>
+    <div class="ai-input-area">
+      <input type="text" id="userInput" placeholder="Ask about the videos...">
+      <button class="ai-send" id="sendBtn">➤</button>
+    </div>
+  </div>
+  <audio id="aiSound" preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=interface-124464.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="js/main.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/smoothscroll.js"></script>
+  <script src="js/ai-assistant.js"></script>
 </body>
 </html>

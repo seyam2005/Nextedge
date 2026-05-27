@@ -1,178 +1,155 @@
-const aiOrb = document.getElementById("aiOrb");
+/* ========================================
+   NEXTEDGE — ai-assistant.js (Merged)
+   GPT:    orb open/close, AI sound, typeText,
+           Enter key
+   Claude: .open class toggle, .msg styling,
+           Anthropic API fetch, typing indicator
+   ======================================== */
 
-const aiPanel = document.getElementById("aiPanel");
+const aiOrb     = document.getElementById('aiOrb');
+const aiPanel   = document.getElementById('aiPanel');
+const closeAI   = document.getElementById('closeAI');
+const sendBtn   = document.getElementById('sendBtn');
+const userInput = document.getElementById('userInput');
+const aiChat    = document.getElementById('aiChat');
+const aiSound   = document.getElementById('aiSound');
 
-const closeAI = document.getElementById("closeAI");
+if (!aiOrb || !aiPanel || !closeAI || !sendBtn || !userInput || !aiChat) {
+  console.warn('NextEdge AI: One or more elements missing.');
+} else {
 
-const sendBtn = document.getElementById("sendBtn");
+  /* ── Unlock audio on first interaction ── */
+  document.body.addEventListener('click', () => {
+    if (aiSound) aiSound.load();
+  }, { once: true });
 
-const userInput = document.getElementById("userInput");
-const aiChat = document.getElementById("aiChat");
-const aiSound = document.getElementById("aiSound");
-document.body.addEventListener("click",()=>{
+  /* ── OPEN panel ── */
+  aiOrb.addEventListener('click', () => {
+    aiPanel.classList.add('active');
+    aiPanel.classList.add('open');
+    aiPanel.style.display = 'flex';
 
-    aiSound.load();
+    if (aiSound) {
+      aiSound.currentTime = 0;
+      aiSound.play().catch(() => {});
+    }
 
-},{ once:true });
-/* OPEN */
+    setTimeout(() => { aiChat.scrollTop = aiChat.scrollHeight; }, 50);
+  });
 
-aiOrb.addEventListener("click",()=>{
+  /* ── CLOSE panel ── */
+  closeAI.addEventListener('click', () => {
+    aiPanel.classList.remove('active');
+    aiPanel.classList.remove('open');
+    aiPanel.style.opacity = '0';
+    setTimeout(() => {
+      if (!aiPanel.classList.contains('active')) {
+        aiPanel.style.display = 'none';
+        aiPanel.style.opacity = '';
+      }
+    }, 350);
+  });
 
-    aiPanel.classList.add("active");
-aiSound.currentTime = 0;
+  /* ── Enter key to send ── */
+  userInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') sendMessage();
+  });
 
-aiSound.play().catch(err => console.log(err));
-})
+  /* ── Button click to send ── */
+  sendBtn.addEventListener('click', sendMessage);
 
-/* CLOSE */
+  /* ── SEND MESSAGE ── */
+  async function sendMessage() {
+    const text = userInput.value.trim();
+    if (!text) return;
 
-closeAI.addEventListener("click",()=>{
+    appendMessage(text, 'user');
+    userInput.value = '';
 
-    aiPanel.classList.remove("active");
-
-})
-
-/* SEND */
-
-sendBtn.addEventListener("click",sendMessage);
-
-async function sendMessage(){
-
-    const text = userInput.value;
-
-    if(text === "") return;
-
-    /* USER MESSAGE */
-
-    const userMsg = document.createElement("div");
-
-    userMsg.classList.add("ai-message");
-
-    userMsg.style.alignSelf = "flex-end";
-
-    userMsg.style.background = "#0ea5e9";
-
-    userMsg.innerText = text;
-
-    aiChat.appendChild(userMsg);
-
-    userInput.value = "";
-
-    /* TYPING */
-
-    const typing = document.createElement("div");
-
-    typing.classList.add("typing");
-
-    typing.innerHTML = `
-    
-    <span></span>
-    <span></span>
-    <span></span>
-
-    `;
-
+    // Typing indicator
+    const typing = document.createElement('div');
+    typing.classList.add('typing');
+    typing.innerHTML = '<span></span><span></span><span></span>';
     aiChat.appendChild(typing);
-
     aiChat.scrollTop = aiChat.scrollHeight;
 
-    try{
+    try {
+      /* ── Anthropic API ── */
+      const response = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1000,
+          system: `You are the NextEdge AI assistant for Shahriar Seyam's creative portfolio website called NextEdge.
+Shahriar is a student at East West University (EWU), Bangladesh. He is a photographer, videographer, web developer, and content creator.
+His portfolio (NextEdge) includes: Photography, Videography, Sports (Football & Cricket), Campus life (Uni Life), and Web projects.
+Answer questions about his work, skills, and creative journey in a warm, professional, and concise way.
+Keep replies under 3 sentences unless asked for more detail.`,
+          messages: [{ role: 'user', content: text }]
+        })
+      });
 
-        const response = await fetch("http://localhost:5001/api/ai-chat",{
+      const data = await response.json();
+      typing.remove();
 
-            method:"POST",
+      const reply = data?.content?.[0]?.text || 'I had trouble responding. Please try again.';
 
-            headers:{
-                "Content-Type":"application/json"
-            },
+      const botBubble = createBotBubble();
+      aiChat.appendChild(botBubble);
+      typeText(botBubble, reply);
 
-            body:JSON.stringify({
-
-                message:text
-
-            })
+    } catch (error) {
+      typing.remove();
+      try {
+        const res  = await fetch('http://localhost:5001/api/ai-chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: text })
         });
-
-        const data = await response.json();
-
-        typing.remove();
-
-        const aiMsg = document.createElement("div");
-
-        aiMsg.classList.add("ai-message");
-
-        typeText(aiMsg, data.reply);
-
-        aiChat.appendChild(aiMsg);
-
-        aiChat.scrollTop = aiChat.scrollHeight;
-
+        const data = await res.json();
+        const botBubble = createBotBubble();
+        aiChat.appendChild(botBubble);
+        typeText(botBubble, data.reply || 'No reply received.');
+      } catch {
+        appendMessage('AI connection failed. Check your network or server.', 'bot');
+      }
     }
 
-    catch(error){
+    aiChat.scrollTop = aiChat.scrollHeight;
+  }
 
-        typing.remove();
+  /* ── HELPERS ── */
 
-        const errorMsg = document.createElement("div");
-
-        errorMsg.classList.add("ai-message");
-
-        errorMsg.innerText = "AI connection failed.";
-
-        aiChat.appendChild(errorMsg);
+  function appendMessage(text, role) {
+    const div = document.createElement('div');
+    if (role === 'user') {
+      div.classList.add('msg', 'user');
+    } else {
+      div.classList.add('msg', 'bot', 'ai-message');
     }
-}
+    div.textContent = text;
+    aiChat.appendChild(div);
+    aiChat.scrollTop = aiChat.scrollHeight;
+    return div;
+  }
 
+  function createBotBubble() {
+    const div = document.createElement('div');
+    div.classList.add('msg', 'bot', 'ai-message');
+    return div;
+  }
 
-
-/* ENTER KEY */
-
-userInput.addEventListener("keypress",(e)=>{
-
-    if(e.key === "Enter"){
-
-        sendMessage();
-
-    }
-
-})
-
-/* MOUSE GLOW */
-
-const glow = document.querySelector(".mouse-glow");
-
-document.addEventListener("mousemove",(e)=>{
-
-    glow.style.left = e.clientX + "px";
-
-    glow.style.top = e.clientY + "px";
-
-})
-
-
-/* TYPE EFFECT */
-
-function typeText(element,text){
-
+  function typeText(element, text) {
     let index = 0;
-
-    const interval = setInterval(()=>{
-
-        if(index < text.length){
-
-            element.innerHTML += text.charAt(index);
-
-            index++;
-
-            aiChat.scrollTop = aiChat.scrollHeight;
-
-        }
-
-        else{
-
-            clearInterval(interval);
-
-        }
-
-    },15);
+    const interval = setInterval(() => {
+      if (index < text.length) {
+        element.innerHTML += text.charAt(index);
+        index++;
+        aiChat.scrollTop = aiChat.scrollHeight;
+      } else {
+        clearInterval(interval);
+      }
+    }, 15);
+  }
 }

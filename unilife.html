@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus — Uni Life | NextEdge</title>
+  <meta name="description" content="University life at EWU — events, clubs, and campus moments by Shahriar Seyam.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div class="mouse-glow" id="mouseGlow"></div>
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose">✕</button>
+    <a href="index.html">Home</a>
+    <a href="photography.html">Lens</a>
+    <a href="videography.html">Motion</a>
+    <a href="sports.html">Arena</a>
+    <a href="unilife.html" class="active">Campus</a>
+  </div>
+
+  <canvas id="particles"></canvas>
+
+  <header class="navbar" id="navbar">
+    <div class="nav-left">
+      <a href="index.html" class="logo">NextEdge</a>
+    </div>
+    <nav id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="photography.html">Lens</a>
+      <a href="videography.html">Motion</a>
+      <a href="sports.html">Arena</a>
+      <a href="unilife.html" class="active">Campus</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="darkToggle">🌙</button>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+      <button class="menu-btn" id="menuBtn">☰</button>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="hero-grid"></div>
+    <div class="page-hero-content reveal">
+      <div class="section-label">// Campus</div>
+      <h1 class="section-title">Life at<br><em>EWU</em></h1>
+      <div class="divider"></div>
+      <p class="hero-description">
+        East West University — where every semester is a new chapter. Clubs, events, friendships, and the everyday magic of campus life.
+      </p>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="highlights-section">
+    <div class="section-label reveal">// Life</div>
+    <h2 class="section-title reveal">Campus<br><em>Highlights</em></h2>
+    <div class="divider reveal"></div>
+    <div class="sports-grid reveal">
+      <div class="sport-card">
+        <div class="sport-icon">🎓</div>
+        <h3>Academic Journey</h3>
+        <p>Studying at EWU since 2023 — balancing coursework with creative projects and extracurricular involvement.</p>
+      </div>
+      <div class="sport-card">
+        <div class="sport-icon">🎪</div>
+        <h3>Club Activities</h3>
+        <p>Active in university clubs, contributing to events, leadership roles, and collaborative projects.</p>
+      </div>
+      <div class="sport-card">
+        <div class="sport-icon">📅</div>
+        <h3>Campus Events</h3>
+        <p>Cultural fests, seminars, sports days, and creative showcases — always in the thick of it all.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAMPUS GALLERY -->
+  <section class="campus-gallery">
+    <div class="section-label reveal">// Moments</div>
+    <h2 class="section-title reveal">Campus<br><em>Moments</em></h2>
+    <div class="divider reveal"></div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&q=80" alt="University">
+        <div class="gallery-overlay"><span>Campus · EWU</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&q=80" alt="Students">
+        <div class="gallery-overlay"><span>Student Life</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=600&q=80" alt="Lecture">
+        <div class="gallery-overlay"><span>Study Sessions</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=80" alt="Teamwork">
+        <div class="gallery-overlay"><span>Group Projects</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1527956041665-d7a1b380c460?w=600&q=80" alt="Event">
+        <div class="gallery-overlay"><span>Campus Events</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1480429370139-e0132c086e2a?w=600&q=80" alt="Campus social">
+        <div class="gallery-overlay"><span>Social Life</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="timeline-section">
+    <div class="section-label reveal">// Journey</div>
+    <h2 class="section-title reveal">EWU<br><em>Timeline</em></h2>
+    <div class="divider reveal"></div>
+    <div class="timeline reveal">
+      <div class="timeline-event">
+        <time>2023 · Semester 1</time>
+        <h3>First Steps at EWU</h3>
+        <p>Orientation day, first friends, first classes — the beginning of a defining chapter.</p>
+      </div>
+      <div class="timeline-event">
+        <time>2023 · Semester 2</time>
+        <h3>Joining Clubs</h3>
+        <p>Became active in university clubs, discovering leadership skills and collaborative energy.</p>
+      </div>
+      <div class="timeline-event">
+        <time>2024 · Semester 3</time>
+        <h3>NextEdge Born</h3>
+        <p>Launched the NextEdge brand to document creative work, campus life, and personal projects.</p>
+      </div>
+      <div class="timeline-event">
+        <time>2024 · Semester 4</time>
+        <h3>YouTube & Content</h3>
+        <p>Started the YouTube channel, bringing EWU and creative life to a wider audience.</p>
+      </div>
+      <div class="timeline-event">
+        <time>2025</time>
+        <h3>Leadership & Events</h3>
+        <p>Taking on bigger roles in campus events, sports, and creative collaborations.</p>
+      </div>
+      <div class="timeline-event">
+        <time>2026</time>
+        <h3>NextEdge v2</h3>
+        <p>Complete portfolio redesign — cinematic, AI-powered, and built for what comes next.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMAGE MODAL -->
+  <div class="modal" id="imgModal">
+    <button class="modal-close">✕</button>
+    <img id="modalImg" src="" alt="Full view">
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="foot-logo">NextEdge</span>
+    <span class="foot-copy">© 2026 Shahriar Seyam — All rights reserved</span>
+    <div class="foot-links">
+      <a href="photography.html">Lens</a>
+      <a href="videography.html">Motion</a>
+      <a href="sports.html">Arena</a>
+    </div>
+  </footer>
+
+  <div class="ai-orb" id="aiOrb">
+    <div class="orb-tooltip">Ask NextEdge AI</div>
+    <span class="ai-orb-icon">✦</span>
+  </div>
+  <div class="ai-panel" id="aiPanel">
+    <div class="ai-header">
+      <div class="ai-avatar">NE</div>
+      <div class="ai-header-info">
+        <h3>NextEdge AI</h3>
+        <div class="ai-status"><span class="ai-status-dot"></span>ONLINE</div>
+      </div>
+      <button id="closeAI">✕</button>
+    </div>
+    <div class="ai-chat" id="aiChat">
+      <div class="msg bot">Ask me about campus life at EWU, clubs, events, or Shahriar's university journey!</div>
+    </div>
+    <div class="ai-input-area">
+      <input type="text" id="userInput" placeholder="Ask about campus life...">
+      <button class="ai-send" id="sendBtn">➤</button>
+    </div>
+  </div>
+  <audio id="aiSound" preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=interface-124464.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="js/main.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/smoothscroll.js"></script>
+  <script src="js/ai-assistant.js"></script>
+</body>
+</html>

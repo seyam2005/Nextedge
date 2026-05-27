@@ -3,196 +3,503 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NextEdge</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>NextEdge — Shahriar Seyam</title>
+  <meta name="description" content="NextEdge — Portfolio, Photography, Videography & Creative Journey of Shahriar Seyam">
+  <meta name="keywords" content="Portfolio, Photography, Videography, Creative, Shahriar Seyam, EWU, NextEdge">
+  <meta name="author" content="Shahriar Seyam">
+  <meta property="og:title" content="NextEdge — Shahriar Seyam">
+  <meta property="og:description" content="Creative portfolio of Shahriar Seyam — Photographer, Videographer, Web Developer">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <meta name="description" content="NextEdge – Portfolio, Photography, Videography & Creative Journey of Shahriar Seyam">
-<meta name="keywords" content="Portfolio, Photography, Videography, Creative, Shahriar Seyam">
-<meta name="author" content="Shahriar Seyam">
-
-<!-- Open Graph -->
-<meta property="og:title" content="NextEdge">
-<meta property="og:description" content="Creative portfolio of Shahriar Seyam">
-<meta property="og:type" content="website">
-
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
 <body>
-  <div class="mouse-glow"></div>
-<div id="preloader">
-  <div class="capsule">
-    <span class="text loading" id="loadText">
-      LOADING 0%  <span class="cursor"> ▍</span>
-    </span>
 
-    <span class="text welcome" id="welcomeText">
-      <span class="cursor">▍</span>WELCOME
-    </span>
+  <!-- MOUSE GLOW -->
+  <div class="mouse-glow" id="mouseGlow"></div>
 
-    <div class="wipe" id="wipe"></div>
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="pre-logo">NextEdge</div>
+    <div class="capsule">
+      <span class="text loading" id="loadText">
+        LOADING 0%<span class="cursor-blink">▍</span>
+      </span>
+      <span class="text welcome" id="welcomeText">
+        <span class="cursor-blink">▍</span>WELCOME
+      </span>
+      <div class="wipe" id="wipe"></div>
+    </div>
   </div>
-</div>
 
-
-
-  <!-- 🔒 MAIN SITE -->
-  <div id="site">
-    <!-- 🔽 তোর পুরো website code এখানে থাকবে -->
-    <!-- navbar, hero, sections সব -->
-  
-<div id="smooth-wrapper">
-<div id="smooth-content">
-
-<header class="navbar">
-  <div class="cursor-light" id="cursorLight"></div>
-
-  <div class="logo">NextEdge</div>
-  <nav id="navMenu">
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose">✕</button>
     <a href="index.html">Main</a>
-    <a href="portfolio.html">Portfolio</a>
     <a href="photography.html">Photography</a>
     <a href="videography.html">Videography</a>
-    <a href="uni.html">Uni Life</a>
     <a href="sports.html">Sports</a>
-  </nav>
-
-  <div class="nav-actions">
-    <button id="darkToggle">🌙</button>
-    <div class="menu-btn" onclick="toggleMenu()">☰</div>  
-
-  </div>
-</header>
-<section class="hero">
-  <div class="hero-text">
-    <h1>Capture. Create. Chronicle.</h1>
-    <p>Portfolio, Photography, Videography, Campus Life & Sports — all from Shahriar Seyam’s perspective.</p>
-    <a href="index.html" class="cta-button">Explore Now</a>
+    <a href="unilife.html">Uni Life</a>
   </div>
 
-  <div class="hero-slideshow">
-    <img id="heroSlide" src="https://picsum.photos/900/700" alt="Hero slideshow">
-  </div>
-</section>
+  <!-- PARTICLES CANVAS -->
+  <canvas id="particles"></canvas>
 
-<section class="tools reveal">
-  <h2>Creative Stack</h2>
-  <div class="tool-grid">
-    <div>🎨 Photoshop</div>
-    <div>💻 Web Development</div>
-    <div>📸 Photography</div>
-    <div>🎬 YouTube Creator</div>
-    <div>🧠 AI Prompt Design</div>
-  </div>
-</section>
-
-<section class="connect reveal">
-  <h2>Connect With Me</h2>
-  <a href="https://www.facebook.com/share/17wfZN3cvn/">Facebook</a>
-  <a href="https://www.linkedin.com/in/md-shahriar-hossen-seyam-887b45358">LinkedIn</a>
-  <a href="https://www.youtube.com/channel/UCDEPGnOKl-mNBVvNNhU8YJg">YouTube</a>
-  <a href="#">GitHub</a>
-</section>
-
-<section class="projects reveal">
-  <div class="project-card">
-    <img src="https://picsum.photos/600/400" alt="NextEdge Portfolio Project">
-    <h3>NextEdge Portfolio</h3>
-    <p>Role: Designer + Developer</p>
-    <p>Tech: HTML • CSS • JS</p>
-  </div>
-</section>
-
-<section class="building reveal">
-  <h2>Currently Building</h2>
-  <ul>
-    <li>🚀 Personal Creative Portfolio System</li>
-    <li>🎬 YouTube Creative Vlog</li>
-    <li>🧠 AI Integrated Web Experiences</li>
-  </ul>
-</section>
-
-<section class="timeline reveal">
-  <div class="event">
-    <h3>First Day at EWU</h3>
-    <p>Beginning of creative journey</p>
-  </div>
-  <div class="event">
-    <h3>Club Activities</h3>
-    <p>Leadership & teamwork</p>
-  </div>
-</section>
-
-<section class="sports-profile reveal">
-  <h2>Athletic Side</h2>
-  <ul>
-    <li>⚽ Football</li>
-    <li>🏏 Cricket</li>
-    <li>🏆 Inter-university matches</li>
-  </ul>
-</section>
-
-<section class="studio reveal">
-  <h2>Visual Storytelling</h2>
-  <iframe width="100%" height="400" title="YouTube Video"
-    src="https://www.youtube.com/embed/VIDEOID"
-    allowfullscreen></iframe>
-</section>
-
-<footer>
-  © 2026 NextEdge | Powered by Shahriar Seyam
-</footer>
-
-</div>
-</div>
-<canvas id="particles"> </canvas>
-<script src="js/main.js"></script>
-</div>
-<!-- AI ASSISTANT -->
-
-<!-- AI ASSISTANT -->
-<div class="ai-orb" id="aiOrb">
-
-    <div class="orb-tooltip">
-        Ask NextEdge AI
+  <!-- ══════════════════════════════════════
+       NAVBAR — bracketed logo + badge
+       ══════════════════════════════════════ -->
+  <header class="navbar" id="navbar">
+    <div class="nav-left">
+      <a href="index.html" class="logo">NextEdge</a>
+  
     </div>
 
-    <div class="orb-core"></div>
+    <nav id="navMenu">
+      <a href="index.html" class="active">Home</a>
+      <a href="photography.html">Photography</a>
+      <a href="videography.html">Videography</a>
+      <a href="sports.html">Sports</a>
+      <a href="unilife.html">Uni Life</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="darkToggle">🌙</button>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+      <button class="menu-btn" id="menuBtn">☰</button>
+    </div>
+  </header>
 
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="nav-badge">
+        <span class="nav-badge-dot"></span>
+        <span>Available for Creative Collaborations</span>
+      </div>
+      <h1>Capture. <em>Create.</em><br>Chronicle.</h1>
+      <p>Photography, videography, web development & campus life — all through the lens of Shahriar Seyam from East West University.</p>
+      <div class="hero-btns">
+        <a href="photography.html" class="btn-primary">View Work</a>
+        <a href="#about" class="btn-outline">About Me</a>
+      </div>
+    </div>
+    <div class="hero-slideshow">
+      <img id="heroSlide"
+           src="https://picsum.photos/900/700"
+           alt="Creative visual">
+    </div>
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      SCROLL
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       MARQUEE TICKER
+       ══════════════════════════════════════ -->
+  <div class="marquee-wrap">
+    <div class="marquee-track" id="marqueeTrack">
+      <span class="marquee-item">Photography <span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">EAST WEST UNIVERSITY CSE <span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">Videography <span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">Web Development <span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">AI Specialist <span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">Creative Direction <span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">EWU Campus Life <span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">YouTube Creator <span class="marquee-sep">✦</span></span>
+      <!-- duplicate for seamless loop -->
+      <span class="marquee-item">Photography <span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">EAST WEST UNIVERSITY CSE <span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">Videography <span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">Web Development <span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">AI Specialist <span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">Creative Direction <span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">EWU Campus Life <span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">YouTube Creator <span class="marquee-sep">✦</span></span>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <section class="stats-section">
+    <div class="stats-bar reveal">
+      <div class="stat">
+        <span class="stat-num" data-count="50" data-suffix="+">0+</span>
+        <span class="stat-label">Photos Captured</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-count="12" data-suffix="+">0+</span>
+        <span class="stat-label">Videos Created</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-count="3" data-suffix="">0</span>
+        <span class="stat-label">Years Creative</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-count="5" data-suffix="+">0+</span>
+        <span class="stat-label">Projects Built</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about-section">
+    <div class="about-grid">
+      <div class="about-img reveal">
+        <img src="https://scontent.fdac189-1.fna.fbcdn.net/v/t39.30808-6/515253081_1719670475332931_1839922866021828111_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeFVQjVjCE_fDjzfkXVjzrjwSl76tBm0ofBKXvq0GbSh8BI4BAcKvgMf70vnpkWBeivhp-Ly4kVzEjChBPXljQHA&_nc_ohc=EuDxXKqGRFAQ7kNvwHMamJa&_nc_oc=Adr7BLltvbJEvskI8EHoIfqLRP0K8o2K_b4c6MAiOCsk2rZ6dmXcCVxh-gtAhFCo6HY&_nc_zt=23&_nc_ht=scontent.fdac189-1.fna&_nc_gid=ql2a1K2KMqnyPUyXp-MqKg&_nc_ss=7b2a8&oh=00_Af7um2YWlpv2W_JuZ-1pcyQ4QsE1T2MBhdkxE_1E0I0KfQ&oe=6A1CF972" alt="Shahriar Seyam">
+      </div>
+      <div class="reveal">
+        <div class="section-label">// About</div>
+        <h2 class="section-title">The Creative<br><em>Behind the Lens</em></h2>
+        <div class="divider"></div>
+        <p class="about-text about-text-1">
+          I'm Shahriar Seyam — a student at East West University (EWU), Undergraduate in Computer Science and Engineering, Dhaka-Bangladesh, with a passion for creating visual stories. From street photography to web development, I explore every medium with curiosity and craft.
+        </p>
+        <p class="about-text about-text-2">
+          NextEdge is my creative universe — a space where I document life, build things, and push the boundaries of what one person can make.
+        </p>
+        <div class="tool-chips">
+          <div class="chip">🎨 Photoshop</div>
+          <div class="chip">💻 Web Dev</div>
+         <div class="chip">
+  <i class="fa-brands fa-youtube"></i>
+  YouTube Creator
 </div>
-
-<div class="ai-panel" id="aiPanel">
-
-    <div class="ai-header">
-  <h3>AI Assistant</h3>
-
-  <div id="closeAI">✕</div>
-</div>
-    <div class="ai-chat" id="aiChat">
-
-        <div class="ai-message">
-           Initializing NextEdge AI...
+        
+          <div class="chip">🧠 AI Design</div>
+          <div class="chip">⚽ Football</div>
+          <div class="chip">🏏 Cricket</div>
         </div>
-
+      </div>
     </div>
+  </section>
 
-    <div class="ai-input-area">
-
-        <input type="text" id="userInput" placeholder="Ask something...">
-
-        <button id="sendBtn">
-            Send
-        </button>
-
-    </div>
-
+  <!-- CREATIVE STACK -->
+  <section class="creative-stack-section">
+    <div class="section-label reveal">// Toolkit</div>
+    <h2 class="section-title reveal">Creative<br><em>Stack</em></h2>
+    <div class="divider reveal"></div>
+    <div class="tool-grid reveal">
+      <div>🎨<br><strong>Photoshop</strong><br><small>Visual editing & compositing</small></div>
+      <div>💻<br><strong>Web Development</strong><br><small>HTML · CSS · JavaScript</small></div>
+      <div>📸<br><strong>Photography</strong><br><small>Street, campus & portraits</small></div>
+    <div> <i class="fa-brands fa-youtube"></i><br><strong>
+  YouTube Creator </strong><br><small>Vlog & visual storytelling</small>
 </div>
+   
+      <div>🧠<br><strong>AI Design</strong><br><small>Prompt engineering & tools</small></div>
+    </div>
+  </section>
 
-<script src="js/ai-assistant.js"></script>
-<audio id="aiSound" preload="auto">
+  <!-- PROJECTS -->
+  <section class="projects-section">
+    <div class="section-label reveal">// Featured Work</div>
+    <h2 class="section-title reveal">Selected<br><em>Projects</em></h2>
+    <div class="divider reveal"></div>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80" alt="NextEdge Portfolio">
+        <div class="project-info">
+          <h3>NextEdge Portfolio</h3>
+          <p>Role: Designer + Developer</p>
+          <p>Tech: HTML · CSS · JavaScript</p>
+          <div class="project-tag">WEB DEVELOPMENT</div>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&q=80" alt="Photography Series">
+        <div class="project-info">
+          <h3>EWU Campus Series</h3>
+          <p>A documentary photography series exploring campus life and student moments.</p>
+          <div class="project-tag">PHOTOGRAPHY</div>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&q=80" alt="YouTube Vlog">
+        <div class="project-info">
+          <h3>Creative Vlog Series</h3>
+          <p>Behind-the-scenes content creation and campus vlogging on YouTube.</p>
+          <div class="project-tag">VIDEOGRAPHY</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- CURRENTLY BUILDING -->
+  <section class="section-padding">
+    <div class="section-label reveal">// In Progress</div>
+    <h2 class="section-title reveal">Currently<br><em>Building</em></h2>
+    <div class="divider reveal"></div>
+    <div class="sports-grid reveal">
+      <div class="sport-card">
+        <div class="sport-icon">🚀</div>
+        <h3>Creative Portfolio System</h3>
+        <p>A fully custom personal portfolio with cinematic animations and AI integration.</p>
+      </div>
+      <div class="sport-card">
+        <div class="sport-icon"> <i class="fa-brands fa-youtube"></i></div>
+         <h3>YouTube Creative Blog</h3>    
+        <p>Ongoing video series documenting campus life and creative projects.</p>
+      </div>
+      <div class="sport-card">
+        <div class="sport-icon">🧠</div>
+        <h3>AI Web Experiences</h3>
+        <p>Experimenting with AI-integrated interfaces and prompt-driven design.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO STUDIO -->
+  <section class="section-padding section-dark">
+    <div class="section-label reveal">// Videography</div>
+    <h2 class="section-title reveal">Visual<br><em>Storytelling</em></h2>
+    <div class="divider reveal"></div>
+    <div class="video-wrap reveal">
+      <iframe
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        title="NextEdge Creative Reel"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="section-padding-lg">
+    <div class="section-label reveal">// Journey</div>
+    <h2 class="section-title reveal">Creative<br><em>Timeline</em></h2>
+    <div class="divider reveal"></div>
+    <div class="timeline reveal">
+      <div class="timeline-event">
+        <time>2023</time>
+        <h3>First Day at EWU</h3>
+        <p>Beginning of the creative journey — new campus, new possibilities.</p>
+      </div>
+      <div class="timeline-event">
+        <time>2024</time>
+        <h3>Started NextEdge</h3>
+        <p>Launched the personal portfolio brand combining photography, web dev, and content creation.</p>
+      </div>
+      <div class="timeline-event">
+        <time>2024</time>
+        <h3>YouTube Channel Launch</h3>
+        <p>Started documenting creative life and EWU moments through video storytelling.</p>
+      </div>
+      <div class="timeline-event">
+        <time>2025</time>
+        <h3>Club & Leadership</h3>
+        <p>Active in university club activities, building teamwork and leadership experience.</p>
+      </div>
+      <div class="timeline-event">
+        <time>2026</time>
+        <h3>NextEdge v2</h3>
+        <p>Complete redesign — cinematic, AI-powered, and future-ready.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPORTS -->
+  <section class="section-padding section-dark">
+    <div class="section-label reveal">// Athletics</div>
+    <h2 class="section-title reveal">Athletic<br><em>Side</em></h2>
+    <div class="divider reveal"></div>
+    <div class="sports-grid reveal">
+      <div class="sport-card">
+        <div class="sport-icon">⚽</div>
+        <h3>Football</h3>
+        <p>Inter-university matches and recreational play with the campus team.</p>
+      </div>
+      <div class="sport-card">
+        <div class="sport-icon">🏏</div>
+        <h3>Cricket</h3>
+        <p>Weekend matches, tournaments, and cricket culture at EWU.</p>
+      </div>
+      <div class="sport-card">
+        <div class="sport-icon">🏆</div>
+        <h3>Tournaments</h3>
+        <p>Competing in inter-university and club-level sports events.</p>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- CONNECT -->
+<section class="projects-section">
+
+  <div class="section-label reveal">// Let's Connect</div>
+
+  <h2 class="section-title reveal">
+    Find Me<br><em>Everywhere</em>
+  </h2>
+
+  <div class="divider reveal"></div>
+
+  <div class="social-grid reveal">
+
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/share/17wfZN3cvn/"
+       class="social-card"
+       target="_blank"
+       rel="noopener">
+
+      <span class="social-icon">
+        <i class="fa-brands fa-facebook"></i>
+      </span>
+
+      <div class="social-info">
+        <strong>Facebook</strong>
+        <span>Follow along</span>
+      </div>
+
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/md-shahriar-hossen-seyam-887b45358"
+       class="social-card"
+       target="_blank"
+       rel="noopener">
+
+      <span class="social-icon">
+        <i class="fa-brands fa-linkedin"></i>
+      </span>
+
+      <div class="social-info">
+        <strong>LinkedIn</strong>
+        <span>Professional profile</span>
+      </div>
+
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://www.youtube.com/channel/UCDEPGnOKl-mNBVvNNhU8YJg"
+       class="social-card"
+       target="_blank"
+       rel="noopener">
+
+      <span class="social-icon">
+        <i class="fa-brands fa-youtube"></i>
+      </span>
+
+      <div class="social-info">
+        <strong>YouTube</strong>
+        <span>Creative vlogs</span>
+      </div>
+
+    </a>
+
+    <!-- GitHub -->
+    <a href="https://github.com/seyam2005/Nextedge"
+       class="social-card"
+       target="_blank"
+       rel="noopener">
+
+      <span class="social-icon">
+        <i class="fa-brands fa-github"></i>
+      </span>
+
+      <div class="social-info">
+        <strong>GitHub</strong>
+        <span>Code repository</span>
+      </div>
+
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- CONTACT SECTION -->
+
+<section class="contact-section section-padding">
+
+  <div class="section-label reveal">// Contact</div>
+
+  <h2 class="section-title reveal">
+    Let's Build<br><em>Something Great</em>
+  </h2>
+
+  <div class="divider reveal"></div>
+
+  <form id="contactForm" class="contact-form reveal">
+
+    <input type="text"
+           id="name"
+           placeholder="Your Name"
+           required>
+
+    <input type="email"
+           id="email"
+           placeholder="Your Email"
+           required>
+
+    <textarea id="message"
+              placeholder="Your Message"
+              required></textarea>
+
+    <button type="submit" class="btn-primary">
+      Send Message
+    </button>
+
+  </form>
+
+</section>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="foot-logo">NextEdge</span>
+    <span class="foot-text">© 2026 NextEdge | Powered by Shahriar Seyam</span>
+    <div class="foot-links">
+      <a href="photography.html">Photography</a>
+      <a href="videography.html">Videography</a>
+      <a href="sports.html">Sports</a>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════
+       AI ASSISTANT — redesigned orb + panel
+       ══════════════════════════════════════ -->
+  <div class="ai-orb" id="aiOrb">
+    <div class="orb-tooltip">Ask NextEdge AI</div>
+    <span class="ai-orb-icon">✦</span>
+  </div>
+
+  <div class="ai-panel" id="aiPanel">
+    <div class="ai-header">
+      <div class="ai-avatar">NE</div>
+      <div class="ai-header-info">
+        <h3>NextEdge AI</h3>
+        <div class="ai-status">
+          <span class="ai-status-dot"></span>
+          ONLINE
+        </div>
+      </div>
+      <button id="closeAI">✕</button>
+    </div>
+    <div class="ai-chat" id="aiChat">
+      <div class="msg bot">Hey! I'm the NextEdge AI. Ask me anything about Shahriar's work, portfolio, or creative journey.</div>
+    </div>
+    <div class="ai-input-area">
+      <input type="text" id="userInput" placeholder="Ask the AI anything...">
+      <button class="ai-send" id="sendBtn">➤</button>
+    </div>
+  </div>
+
+  <audio id="aiSound" preload="auto">
     <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=interface-124464.mp3" type="audio/mpeg">
+  </audio>
 
-</audio>
+  <script src="js/main.js"></script>
+  <script src="js/ai-assistant.js"></script>
 </body>
-
 </html>

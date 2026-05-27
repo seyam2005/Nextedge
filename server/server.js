@@ -1,9 +1,12 @@
 require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
 const Groq = require("groq-sdk");
-const connectDB = require("./config/db");
 
+const connectDB = require("./config/db");
+const Chat = require("./models/chat");
+const contactRoutes = require("./routes/contactRoutes");
 
 const app = express();
 
@@ -13,42 +16,40 @@ connectDB();
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// GROQ CLIENT
 const client = new Groq({
-
   apiKey: process.env.GROQ_API_KEY,
-
 });
 
 // Routes
-const contactRoutes = require("./routes/contactRoutes");
 app.use("/api/contact", contactRoutes);
 
 // Test Route
 app.get("/", (req, res) => {
   res.send("🚀 NextEdge Empire Backend Running");
 });
-/* AI CHAT ROUTE */
+
+/* ========================================
+   AI CHAT ROUTE
+======================================== */
 
 app.post("/api/ai-chat", async (req, res) => {
-
   try {
 
     const userMessage = req.body.message;
 
+    // AI RESPONSE
     const completion = await client.chat.completions.create({
-
       model: "llama-3.3-70b-versatile",
 
       messages: [
-
         {
           role: "system",
-
           content: `
+You are NextEdge AI.
 
-          You are NextEdge AI.
-
-          You speak like an advanced premium AI assistant.
+You speak like an advanced premium AI assistant.
 
 You keep responses sleek, intelligent and futuristic.
 
@@ -59,23 +60,29 @@ You know about:
 - Seyam's creative projects
 - modern development trends
 
--You can provide insights, suggestions and creative ideas related to these topics.
-
+You can provide insights, suggestions and creative ideas related to these topics.
           `,
         },
 
         {
           role: "user",
-
           content: userMessage,
         },
       ],
     });
 
+    // AI REPLY
+    const aiReply = completion.choices[0].message.content;
+
+    // SAVE TO MONGODB
+    await Chat.create({
+      userMessage: userMessage,
+      aiReply: aiReply,
+    });
+
+    // SEND RESPONSE
     res.json({
-
-      reply: completion.choices[0].message.content,
-
+      reply: aiReply,
     });
 
   } catch (error) {
@@ -83,13 +90,13 @@ You know about:
     console.log("FULL ERROR =>", error);
 
     res.status(500).json({
-
       reply: error.message,
-
     });
-}
+  }
 });
-const PORT = process.env.PORT || 5000;
+
+// PORT
+const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, () => {
   console.log(`🔥 Server running on port ${PORT}`);

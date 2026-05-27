@@ -1,52 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <title>Photography - NextEdge</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lens — Photography | NextEdge</title>
+  <meta name="description" content="Photography portfolio of Shahriar Seyam — street, campus & portrait photography.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
 
- <header class="navbar">
-  <div class="logo">NextEdge</div>
-  <nav>
-    <a href="index.html" class="active">Main</a>
-     <a href="bio-data.html" class="active">Bio-Data</a>
-    <a href="photography.html" class="active">Photography</a>
-    <a href="videography.html" class="active">Videography</a>
-    <a href="unilife.html" class="active">Uni Life</a>
-    <a href="sports.html" class="active">Sports</a>
-  </nav>
-  <div class="nav-actions"></div>
-  <button id="darkToggle">🌙</button>
+  <div class="mouse-glow" id="mouseGlow"></div>
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
 
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose">✕</button>
+    <a href="index.html">Home</a>
+    <a href="photography.html" class="active">Lens</a>
+    <a href="videography.html">Motion</a>
+    <a href="sports.html">Arena</a>
+    <a href="unilife.html">Campus</a>
+  </div>
 
-</header>
+  <canvas id="particles"></canvas>
 
-<section class="gallery">
-   <div class="card reveal"><img src="images/photo1.jpg"><p>Photo 1</p></div>
-  <div class="card reveal"><img src="images/photo2.jpg"><p>Photo 2</p></div>
-  <div class="card reveal"><img src="images/photo3.jpg"><p>Photo 3</p></div>
-  <div class="card reveal"><img src="images/photo4.jpg"><p>Photo 4</p></div>
-  <div class="card reveal"><img src="images/photo5.jpg"><p>Photo 5</p></div>
-  <div class="card reveal"><img src="images/photo6.jpg"><p>Photo 6</p></div>
-  <div class="card reveal">
-  <img src="https://res.cloudinary.com/ddygdkxbo/image/upload/v1769955923/WhatsApp_Image_2026-01-26_at_9.15.21_PM_gdemcm.jpg">
-  <p>Photo</p>
-</div>
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="nav-left">
+      <a href="index.html" class="logo">NextEdge</a>
+    </div>
+    <nav id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="photography.html" class="active">Lens</a>
+      <a href="videography.html">Motion</a>
+      <a href="sports.html">Arena</a>
+      <a href="unilife.html">Campus</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="darkToggle">🌙</button>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+      <button class="menu-btn" id="menuBtn">☰</button>
+    </div>
+  </header>
 
-</section>
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="hero-grid"></div>
+    <div class="page-hero-content reveal">
+      <div class="section-label">// Lens</div>
+      <h1 class="section-title">Through the<br><em>Lens</em></h1>
+      <div class="divider"></div>
+      <p class="hero-description">
+        Street photography, campus moments, portraits — every frame tells a story. Shot around East West University and Dhaka.
+      </p>
+    </div>
+  </section>
 
-<!-- Image Modal -->
-<div id="imgModal" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="modalImg">
-</div>
+  <!-- GALLERY -->
+  <section class="gallery-section">
+    <div class="section-label reveal">// Gallery</div>
+    <h2 class="section-title reveal">Selected<br><em>Frames</em></h2>
+    <div class="divider reveal"></div>
 
-<footer>
-  © 2026 NextEdge | Powered by Shahriar Seyam
-</footer>
+    <!-- Filter chips -->
+    <div class="filter-chips reveal">
+      <button class="chip filter-btn active" data-filter="all">All</button>
+      <button class="chip filter-btn" data-filter="street">Street</button>
+      <button class="chip filter-btn" data-filter="campus">Campus</button>
+      <button class="chip filter-btn" data-filter="portrait">Portrait</button>
+      <button class="chip filter-btn" data-filter="nature">Nature</button>
+    </div>
 
-<script src="js/main.js"></script>
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item reveal" data-category="campus">
+        <img src="https://images.unsplash.com/photo-1527856263669-12c3a0af2aa6?w=600&q=80" alt="Campus life">
+        <div class="gallery-overlay"><span>Campus Life · EWU</span></div>
+      </div>
+      <div class="gallery-item reveal" data-category="portrait">
+        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&q=80" alt="Portrait">
+        <div class="gallery-overlay"><span>Portrait · Natural Light</span></div>
+      </div>
+      <div class="gallery-item reveal" data-category="street">
+        <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80" alt="Dhaka street">
+        <div class="gallery-overlay"><span>Street · Dhaka</span></div>
+      </div>
+      <div class="gallery-item reveal" data-category="nature">
+        <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80" alt="Nature">
+        <div class="gallery-overlay"><span>Nature · Golden Hour</span></div>
+      </div>
+      <div class="gallery-item reveal" data-category="campus">
+        <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=80" alt="EWU campus">
+        <div class="gallery-overlay"><span>Campus · EWU Events</span></div>
+      </div>
+      <div class="gallery-item reveal" data-category="street">
+        <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=600&q=80" alt="Street photo">
+        <div class="gallery-overlay"><span>Street · Urban</span></div>
+      </div>
+      <div class="gallery-item reveal" data-category="portrait">
+        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80" alt="Portrait 2">
+        <div class="gallery-overlay"><span>Portrait · Studio</span></div>
+      </div>
+      <div class="gallery-item reveal" data-category="nature">
+        <img src="https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e?w=600&q=80" alt="Nature 2">
+        <div class="gallery-overlay"><span>Nature · Landscape</span></div>
+      </div>
+      <div class="gallery-item reveal" data-category="campus">
+        <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=600&q=80" alt="University">
+        <div class="gallery-overlay"><span>Campus · Uni Life</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GEAR SECTION -->
+  <section class="gear-section">
+    <div class="section-label reveal">// Equipment</div>
+    <h2 class="section-title reveal">The<br><em>Gear</em></h2>
+    <div class="divider reveal"></div>
+    <div class="sports-grid reveal">
+      <div class="sport-card">
+        <div class="sport-icon">📸</div>
+        <h3>Camera</h3>
+        <p>DSLR — capturing high-resolution stills with sharp detail and beautiful depth of field.</p>
+      </div>
+      <div class="sport-card">
+        <div class="sport-icon">🔭</div>
+        <h3>Lenses</h3>
+        <p>50mm prime for portraits, 18-55mm kit for street and campus documentation work.</p>
+      </div>
+      <div class="sport-card">
+        <div class="sport-icon">🎨</div>
+        <h3>Post-Processing</h3>
+        <p>Adobe Photoshop & Lightroom for colour grading, compositing, and final retouching.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMAGE MODAL -->
+  <div class="modal" id="imgModal">
+    <button class="modal-close">✕</button>
+    <img id="modalImg" src="" alt="Full view">
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="foot-logo">NextEdge</span>
+    <span class="foot-copy">© 2026 Shahriar Seyam — All rights reserved</span>
+    <div class="foot-links">
+      <a href="photography.html">Lens</a>
+      <a href="videography.html">Motion</a>
+      <a href="sports.html">Arena</a>
+    </div>
+  </footer>
+
+  <!-- AI ORB -->
+  <div class="ai-orb" id="aiOrb">
+    <div class="orb-tooltip">Ask NextEdge AI</div>
+    <span class="ai-orb-icon">✦</span>
+  </div>
+  <div class="ai-panel" id="aiPanel">
+    <div class="ai-header">
+      <div class="ai-avatar">NE</div>
+      <div class="ai-header-info">
+        <h3>NextEdge AI</h3>
+        <div class="ai-status"><span class="ai-status-dot"></span>ONLINE</div>
+      </div>
+      <button id="closeAI">✕</button>
+    </div>
+    <div class="ai-chat" id="aiChat">
+      <div class="msg bot">Hey! Ask me anything about Shahriar's photography, gear, or creative process.</div>
+    </div>
+    <div class="ai-input-area">
+      <input type="text" id="userInput" placeholder="Ask about the photography...">
+      <button class="ai-send" id="sendBtn">➤</button>
+    </div>
+  </div>
+  <audio id="aiSound" preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=interface-124464.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="js/main.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/smoothscroll.js"></script>
+  <script src="js/ai-assistant.js"></script>
+
+  <!-- Gallery filter -->
+  <script>
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        const filter = this.dataset.filter;
+        document.querySelectorAll('.gallery-item').forEach(item => {
+          if (filter === 'all' || item.dataset.category === filter) {
+            item.style.display = '';
+            setTimeout(() => item.style.opacity = '1', 10);
+          } else {
+            item.style.opacity = '0';
+            setTimeout(() => item.style.display = 'none', 300);
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>

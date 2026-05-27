@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arena — Sports | NextEdge</title>
+  <meta name="description" content="Sports life of Shahriar Seyam — football, cricket, and university tournaments.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div class="mouse-glow" id="mouseGlow"></div>
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose">✕</button>
+    <a href="index.html">Home</a>
+    <a href="photography.html">Lens</a>
+    <a href="videography.html">Motion</a>
+    <a href="sports.html" class="active">Arena</a>
+    <a href="unilife.html">Campus</a>
+  </div>
+
+  <canvas id="particles"></canvas>
+
+  <header class="navbar" id="navbar">
+    <div class="nav-left">
+      <a href="index.html" class="logo">NextEdge</a>
+    </div>
+    <nav id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="photography.html">Lens</a>
+      <a href="videography.html">Motion</a>
+      <a href="sports.html" class="active">Arena</a>
+      <a href="unilife.html">Campus</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="darkToggle">🌙</button>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+      <button class="menu-btn" id="menuBtn">☰</button>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="hero-grid"></div>
+    <div class="page-hero-content reveal">
+      <div class="section-label">// Arena</div>
+      <h1 class="section-title">Athletic<br><em>Side</em></h1>
+      <div class="divider"></div>
+      <p class="hero-description">
+        Football, cricket, and competitive university tournaments — sport is discipline, teamwork, and the thrill of the game.
+      </p>
+    </div>
+  </section>
+
+  <!-- SPORTS CARDS -->
+  <section class="sports-section">
+    <div class="section-label reveal">// Sports</div>
+    <h2 class="section-title reveal">On the<br><em>Field</em></h2>
+    <div class="divider reveal"></div>
+    <div class="sports-grid reveal">
+      <div class="sport-card">
+        <div class="sport-icon">⚽</div>
+        <h3>Football</h3>
+        <p>Inter-university matches and recreational play. Playing as midfielder — combining creativity with endurance on the pitch.</p>
+      </div>
+      <div class="sport-card">
+        <div class="sport-icon">🏏</div>
+        <h3>Cricket</h3>
+        <p>Weekend matches and EWU cricket tournaments. A true fan of the game — both playing and watching at the highest level.</p>
+      </div>
+      <div class="sport-card">
+        <div class="sport-icon">🏆</div>
+        <h3>Tournaments</h3>
+        <p>Competing in inter-university sports events — representing EWU and building lasting camaraderie with teammates.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPORTS GALLERY -->
+  <section class="sports-gallery">
+    <div class="section-label reveal">// Action</div>
+    <h2 class="section-title reveal">Game<br><em>Day</em></h2>
+    <div class="divider reveal"></div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&q=80" alt="Football">
+        <div class="gallery-overlay"><span>Football · Match Day</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=600&q=80" alt="Cricket">
+        <div class="gallery-overlay"><span>Cricket · EWU Tournament</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=600&q=80" alt="Stadium">
+        <div class="gallery-overlay"><span>Stadium Atmosphere</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&q=80" alt="Training">
+        <div class="gallery-overlay"><span>Training · Campus Ground</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?w=600&q=80" alt="Team">
+        <div class="gallery-overlay"><span>Teamwork · EWU</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&q=80" alt="Football 2">
+        <div class="gallery-overlay"><span>Football · Action</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-section">
+    <div class="stats-bar reveal">
+      <div class="stat">
+        <span class="stat-num" data-count="20" data-suffix="+">0+</span>
+        <span class="stat-label">Matches Played</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-count="2" data-suffix="">0</span>
+        <span class="stat-label">Sports Active</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-count="5" data-suffix="+">0+</span>
+        <span class="stat-label">Tournaments</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-count="3" data-suffix="">0</span>
+        <span class="stat-label">Years at EWU</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMAGE MODAL -->
+  <div class="modal" id="imgModal">
+    <button class="modal-close">✕</button>
+    <img id="modalImg" src="" alt="Full view">
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="foot-logo">NextEdge</span>
+    <span class="foot-copy">© 2026 Shahriar Seyam — All rights reserved</span>
+    <div class="foot-links">
+      <a href="photography.html">Lens</a>
+      <a href="videography.html">Motion</a>
+      <a href="unilife.html">Campus</a>
+    </div>
+  </footer>
+
+  <div class="ai-orb" id="aiOrb">
+    <div class="orb-tooltip">Ask NextEdge AI</div>
+    <span class="ai-orb-icon">✦</span>
+  </div>
+  <div class="ai-panel" id="aiPanel">
+    <div class="ai-header">
+      <div class="ai-avatar">NE</div>
+      <div class="ai-header-info">
+        <h3>NextEdge AI</h3>
+        <div class="ai-status"><span class="ai-status-dot"></span>ONLINE</div>
+      </div>
+      <button id="closeAI">✕</button>
+    </div>
+    <div class="ai-chat" id="aiChat">
+      <div class="msg bot">Ask me about Shahriar's sports life, football, cricket, or EWU tournaments!</div>
+    </div>
+    <div class="ai-input-area">
+      <input type="text" id="userInput" placeholder="Ask about sports...">
+      <button class="ai-send" id="sendBtn">➤</button>
+    </div>
+  </div>
+  <audio id="aiSound" preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=interface-124464.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="js/main.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/smoothscroll.js"></script>
+  <script src="js/ai-assistant.js"></script>
+</body>
+</html>
