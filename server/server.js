@@ -1,13 +1,15 @@
 require("dotenv").config();
 
 const express = require("express");
+const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const Groq = require("groq-sdk");
 
 const connectDB = require("./config/db");
 const Chat = require("./models/chat");
 const contactRoutes = require("./routes/contactRoutes");
-
+const adminRoutes = require("./routes/adminRoutes");
+const authRoutes = require("./routes/auth");
 const app = express();
 
 // Connect Database
@@ -16,7 +18,8 @@ connectDB();
 // Middleware
 app.use(cors());
 app.use(express.json());
-
+app.use(cookieParser());
+app.use("/api/auth", authRoutes);
 // GROQ CLIENT
 const client = new Groq({
   apiKey: process.env.GROQ_API_KEY,
@@ -25,6 +28,7 @@ const client = new Groq({
 // Routes
 app.use("/api/contact", contactRoutes);
 
+app.use("/api/admin", adminRoutes);
 // Test Route
 app.get("/", (req, res) => {
   res.send("🚀 NextEdge Empire Backend Running");
@@ -101,3 +105,4 @@ const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
   console.log(`🔥 Server running on port ${PORT}`);
 });
+module.exports = app;

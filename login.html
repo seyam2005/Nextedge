@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>NextEdge Admin Login</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/login.css">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Background Glow -->
+  <div class="bg-glow glow1"></div>
+  <div class="bg-glow glow2"></div>
+
+  <!-- Login Container -->
+  <section class="login-section">
+
+    <div class="login-card">
+
+      <!-- Logo -->
+      <h1 class="logo">
+        Next<span>Edge</span>
+      </h1>
+
+      <p class="subtitle">
+        Admin Control Panel
+      </p>
+
+      <!-- Form -->
+      <form id="loginForm">
+
+        <div class="input-box">
+
+          <input
+            type="text"
+            id="username"
+            placeholder="Admin Username"
+            required
+          >
+
+        </div>
+
+        <div class="input-box">
+
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            required
+          >
+
+        </div>
+
+        <button type="submit" class="login-btn">
+          ACCESS SYSTEM
+        </button>
+
+      </form>
+
+      <!-- Message -->
+      <p id="message"></p>
+
+    </div>
+
+  </section>
+
+  <!-- JS -->
+  <script src="js/login.js"></script>
+
+</body>
+</html>

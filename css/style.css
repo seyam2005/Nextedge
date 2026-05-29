@@ -97,8 +97,11 @@ body {
   color: var(--blue-accent);
   letter-spacing: 0.15em;
   opacity: 0;
-  text-shadow: 0 0 40px rgba(56,189,248,0.5), 0 0 80px rgba(56,189,248,0.2);
+  text-shadow: 0 0 40px rgba(252, 252, 252, 0.178), 0 0 80px rgba(255, 255, 255, 0.247);
   animation: fadeUp 0.7s ease 0.2s forwards;
+}
+.pre-logo span{
+   color: var(--white);
 }
 .pre-bar-wrap {
   width: 220px; height: 1px;
@@ -111,7 +114,7 @@ body {
   animation: loadBar 1.8s ease forwards 0.6s;
 }
 .pre-pct {
-  font-family: 'Space Mono', monospace;
+  font-family: 'Sans-Serif', monospace;
   font-size: 0.75rem;
   color: var(--blue-accent);
   letter-spacing: 0.2em;
@@ -365,7 +368,8 @@ body {
   text-decoration: none;
   cursor: none;
   transition: all 0.35s ease;
-  -backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
 }
 .btn-outline:hover {
   border-color: var(--blue);
@@ -572,6 +576,7 @@ section::before {
   border-radius: 16px;
   background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
   border: 1px solid var(--border-subtle);
+  -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
   transition: 0.35s;
@@ -866,6 +871,7 @@ section::before {
   z-index: 2000;
   display: none; flex-direction: column;
   overflow: hidden;
+  -webkit-backdrop-filter: blur(24px);
   backdrop-filter: blur(24px);
   box-shadow:
     0 30px 70px rgba(0,0,0,0.7),
@@ -1130,7 +1136,7 @@ footer .foot-links a:hover { color: var(--blue-accent); }
    ════════════════════════════════════════ */
 #preloader {
   position: fixed; inset: 0;
-  background: #020617;
+  background: #060f35;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1145,9 +1151,9 @@ footer .foot-links a:hover { color: var(--blue-accent); }
   position: relative;
   width: 300px;
   height: 60px;
-  background: #020617;
+  background: #000000;
   border-radius: 50px;
-  box-shadow: 0 0 30px rgba(56,189,248,0.5), 0 0 0 1px rgba(56,189,248,0.3);
+  box-shadow: 0 0 30px rgba(75, 156, 191, 0.5), 0 0 0 1px rgba(83, 188, 233, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
