@@ -59,9 +59,21 @@
        ══════════════════════════════════════ -->
   <header class="navbar" id="navbar">
     <div class="nav-left">
-      <a href="index.html" class="logo">NextEdge</a>
-  
-    </div>
+
+  <a href="index.html" class="logo">
+    NextEdge
+  </a>
+
+  <div class="live-counter">
+
+    👁
+    <span id="visitorCount">
+      0
+    </span>
+
+  </div>
+
+</div>
 
     <nav id="navMenu">
       <a href="index.html" class="active">Home</a>
@@ -473,27 +485,52 @@
        AI ASSISTANT — redesigned orb + panel
        ══════════════════════════════════════ -->
   <div class="ai-orb" id="aiOrb">
-    <div class="orb-tooltip">Ask NextEdge AI</div>
+    <div class="orb-tooltip"> NEXTEDGE CORE </div>
     <span class="ai-orb-icon">✦</span>
   </div>
 
   <div class="ai-panel" id="aiPanel">
-    <div class="ai-header">
-      <div class="ai-avatar">NE</div>
-      <div class="ai-header-info">
-        <h3>NextEdge AI</h3>
-        <div class="ai-status">
-          <span class="ai-status-dot"></span>
-          ONLINE
-        </div>
-      </div>
-      <button id="closeAI">✕</button>
+<div class="ai-header">
+
+  <div class="ai-core">
+
+    <div class="ai-avatar">
+      NE
     </div>
+
+    <div class="ai-header-info">
+
+     <h3>NextEdge Neural Core</h3>
+
+      <div class="ai-status">
+        <span class="ai-status-dot"></span>
+        Neural Core Online
+      </div>
+
+    </div>
+
+  </div>
+
+  <button id="closeAI">✕</button>
+
+</div>
     <div class="ai-chat" id="aiChat">
+      <div class="ai-quick">
+
+  <button class="quick-btn">/about</button>
+
+  <button class="quick-btn">/skills</button>
+
+  <button class="quick-btn">/projects</button>
+
+
+</div>
       <div class="msg bot">Hey! I'm the NextEdge AI. Ask me anything about Shahriar's work, portfolio, or creative journey.</div>
     </div>
     <div class="ai-input-area">
-      <input type="text" id="userInput" placeholder="Ask the AI anything...">
+      <input type="text"
+       id="userInput"
+       placeholder="Type a question or use /about">
       <button class="ai-send" id="sendBtn">➤</button>
     </div>
   </div>
@@ -501,11 +538,59 @@
   <audio id="aiSound" preload="auto">
     <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=interface-124464.mp3" type="audio/mpeg">
   </audio>
+<!-- NEXTEDGE COMMAND CENTER -->
 
- <script src="js/main.js"></script>
+<div id="commandCenter" class="command-center">
+
+  <div class="command-box">
+    <div class="command-title">
+
+NEXTEDGE OS
+
+</div>
+
+    <input
+      type="text"
+      id="commandInput"
+      placeholder="Type: photography, matrix, about..."
+      autocomplete="off"
+    >
+
+    <div class="command-list">
+
+      <div class="command-item" data-link="photography.html">
+        📸 Photography
+      </div>
+
+      <div class="command-item" data-link="videography.html">
+        🎬 Videography
+      </div>
+
+      <div class="command-item" data-link="sports.html">
+        ⚽ Sports
+      </div>
+
+      <div class="command-item" data-link="#about">
+        👤 About
+      </div>
+      <div class="command-item" data-secret="matrix">
+        🔥 Matrix Mode
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- MOBILE BUTTON -->
+
+
+<script src="js/main.js"></script>
 <script src="js/cms.js"></script>
-<script src="js/projects.js"></script>
+<script src="js/visitor.js"></script>
 <script src="js/ai-assistant.js"></script>
+<script src="js/command-center.js"></script>
 
 </body>
 </html>

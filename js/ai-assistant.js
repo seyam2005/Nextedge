@@ -125,7 +125,99 @@ async function sendMessage() {
   const text = userInput.value.trim();
 
   if (!text) return;
+  /* ========================================
+   SECRET COMMANDS
+======================================== */
 
+if (text.toLowerCase() === "/about") {
+
+  appendMessage(text, "user");
+
+  appendMessage(`
+👋 I am Shahriar Seyam.
+
+Computer Science & Engineering student at East West University.
+
+Founder of NextEdge.
+
+I work with:
+• Web Development
+• AI Systems
+• Photography
+• Videography
+• Creative Content
+
+My goal is to build futuristic digital experiences.
+  `, "bot");
+
+  userInput.value = "";
+
+  return;
+}
+
+if (text.toLowerCase() === "/skills") {
+
+  appendMessage(text, "user");
+
+  appendMessage(`
+⚡ Core Skills
+
+• HTML
+• CSS
+• JavaScript
+• Node.js
+• Express.js
+• MongoDB
+• AI Integration
+• Photography
+• Videography
+  `, "bot");
+
+  userInput.value = "";
+
+  return;
+}
+
+if (text.toLowerCase() === "/projects") {
+
+  appendMessage(text, "user");
+
+  appendMessage(`
+🚀 Current Projects
+
+• NextEdge Portfolio
+• AI Assistant System
+• Dynamic CMS
+• Photography Showcase
+• Videography Platform
+  `, "bot");
+
+  userInput.value = "";
+
+  return;
+}
+
+if (text.toLowerCase() === "/contact") {
+
+  appendMessage(text, "user");
+
+  appendMessage(`
+📩 Contact Shahriar Seyam
+
+Facebook:
+https://facebook.com
+
+LinkedIn:
+https://linkedin.com
+
+GitHub:
+https://github.com/seyam2005
+  `, "bot");
+
+  userInput.value = "";
+
+  return;
+}
   /* =========================
      USER MESSAGE
   ========================= */
@@ -464,11 +556,18 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const startup = `
 ⚡ NextEdge AI initialized.
+👋 Welcome to NextEdge.
 
-Creative systems online.
-Memory core active.
-Awaiting your command.
-    `;
+I am the personal AI assistant of Shahriar Seyam.
+
+Try:
+
+/about
+/skills
+/projects
+
+Ask anything about Shahriar's work, projects and creative journey.
+`;
 
     const firstMsg =
       document.querySelector(".msg.bot");
@@ -480,5 +579,21 @@ Awaiting your command.
     }
 
   }, 1000);
+
+const quickBtns =
+document.querySelectorAll(".quick-btn");
+
+quickBtns.forEach(btn=>{
+
+  btn.addEventListener("click",()=>{
+
+    userInput.value =
+    btn.innerText;
+
+    sendMessage();
+
+  });
+
+});
 
 });

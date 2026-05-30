@@ -295,3 +295,65 @@ async(e)=>{
 });
 
 loadAbout();
+/* =========================
+   DASHBOARD STATS
+========================= */
+
+async function loadDashboardStats() {
+
+  try {
+
+    // VISITOR
+    const visitorRes =
+      await fetch(
+        "http://localhost:5001/api/visitor/stats"
+      );
+
+    const visitorData =
+      await visitorRes.json();
+
+    const visitorCount =
+      document.getElementById(
+        "visitorCount"
+      );
+
+    if (visitorCount) {
+
+      visitorCount.innerText =
+        visitorData.totalVisits || 0;
+
+    }
+
+  } catch (err) {
+
+    console.log(err);
+
+  }
+
+}
+
+loadDashboardStats();
+/* =========================
+   ONLINE COUNTER
+========================= */
+
+const onlineCount =
+document.getElementById(
+  "onlineCount"
+);
+
+if (onlineCount) {
+
+  setInterval(() => {
+
+    const random =
+      Math.floor(
+        Math.random() * 40
+      ) + 220;
+
+    onlineCount.innerText =
+      random;
+
+  }, 3000);
+
+}

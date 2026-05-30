@@ -362,3 +362,13 @@ if(contactForm){
   });
 
 }
+/* =====================
+   VISITOR COUNT
+===================== */
+
+fetch(
+  "http://localhost:5001/api/visitor"
+)
+.catch(err =>
+  console.log(err)
+);
