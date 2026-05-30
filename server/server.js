@@ -10,7 +10,13 @@ const Chat = require("./models/chat");
 const contactRoutes = require("./routes/contactRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const authRoutes = require("./routes/auth");
+const projectRoutes =
+require("./routes/projectRoutes");
+const uploadRoutes =
+require("./routes/uploadRoutes");
 const app = express();
+const contentRoutes =
+require("./routes/contentRoutes");
 
 // Connect Database
 connectDB();
@@ -20,6 +26,17 @@ app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 app.use("/api/auth", authRoutes);
+app.use("/api/projects", projectRoutes);
+app.use("/api/upload", uploadRoutes);
+app.use("/api/content", contentRoutes);
+const path = require("path");
+app.use("/uploads", express.static("uploads"));
+app.use(
+  "/uploads",
+  express.static(
+    path.join(__dirname, "uploads")
+  )
+);
 // GROQ CLIENT
 const client = new Groq({
   apiKey: process.env.GROQ_API_KEY,

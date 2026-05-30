@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>NextEdge Admin</title>
+
+  <link rel="stylesheet" href="css/admin.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Background Glow -->
+  <div class="bg-glow glow1"></div>
+  <div class="bg-glow glow2"></div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+
+    <h2 class="logo">
+      Next<span>Edge</span>
+    </h2>
+
+    <ul>
+
+      <li>Dashboard</li>
+
+      <li>Add Project</li>
+
+      <li>Photography</li>
+
+      <li>Videos</li>
+
+      <li>Blogs</li>
+
+      <li>Messages</li>
+
+      <li id="logoutBtn">
+        Logout
+      </li>
+
+    </ul>
+
+  </aside>
+
+  <!-- Main -->
+  <main class="main-content">
+
+    <!-- Top -->
+    <div class="topbar">
+
+      <h1>
+        Admin Dashboard
+      </h1>
+
+    </div>
+
+    <!-- Cards -->
+    <section class="cards">
+
+      <div class="card">
+        <h3>Projects</h3>
+        <p id="projectCount">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Blogs</h3>
+        <p>0</p>
+      </div>
+
+      <div class="card">
+        <h3>Photos</h3>
+        <p>0</p>
+      </div>
+
+      <div class="card">
+        <h3>Videos</h3>
+        <p>0</p>
+      </div>
+
+    </section>
+
+    <!-- Add Project -->
+
+    <section class="project-section">
+
+      <h2>Add Project</h2>
+
+      <form id="projectForm">
+
+        <input
+          type="text"
+          id="title"
+          placeholder="Project Title"
+          title="Project Title"
+          required
+        >
+
+        <textarea
+          id="description"
+          placeholder="Project Description"
+          title="Project Description"
+          required
+        ></textarea>
+
+        <input
+          type="file"
+          id="image"
+          accept="image/*"
+          title="Project Image">
+
+        <input
+          type="text"
+          id="category"
+          placeholder="Category"
+          title="Category"
+        >
+
+        <button type="submit">
+          Add Project
+        </button>
+
+      </form>
+
+      <p id="projectMessage"></p>
+
+    </section>
+    <section class="project-section">
+
+  <h2>Edit About Section</h2>
+
+  <form id="aboutForm">
+
+    <input
+      type="text"
+      id="aboutTitle"
+      placeholder="About Title"
+    >
+
+    <textarea
+      id="aboutText"
+      placeholder="About Text"
+    ></textarea>
+
+    <button type="submit">
+      Save About Content
+    </button>
+
+  </form>
+
+  <p id="aboutMessage"></p>
+
+</section>
+
+    <!-- Project List -->
+
+    <section class="project-list">
+
+      <h2>Projects</h2>
+
+      <div id="projectsContainer">
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="js/admin.js"></script>
+
+</body>
+
+</html>

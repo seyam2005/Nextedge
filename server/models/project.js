@@ -1,19 +1,34 @@
-const mongoose = require('mongoose');
 
-const projectSchema = new mongoose.Schema({
-  title: String,
-  description: String,
-  category: String,
-  image: String,
-  tech: [String],
-  featured: {
-    type: Boolean,
-    default: false
+const mongoose = require("mongoose");
+
+const projectSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+
+    description: {
+      type: String,
+      required: true,
+    },
+
+    image: {
+      type: String,
+      default: "",
+    },
+
+    category: {
+      type: String,
+      default: "General",
+    },
   },
-  createdAt: {
-    type: Date,
-    default: Date.now
+  {
+    timestamps: true,
   }
-});
+);
 
-module.exports = mongoose.model('Project', projectSchema);
+module.exports = mongoose.model(
+  "Project",
+  projectSchema
+);

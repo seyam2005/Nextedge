@@ -1467,3 +1467,7 @@ footer .foot-links a:hover { color: var(--blue-accent); }
   }
 
 }
+.reveal.active, .reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
