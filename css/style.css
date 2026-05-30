@@ -148,13 +148,7 @@ body {
   border-bottom-color: rgba(59, 130, 246, 0.22);
 }
 
-/* Left group: logo stacked above badge */
-.nav-left {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  align-items: flex-start;
-}
+
 
 /* Bracketed logo */
 .logo {
@@ -1625,33 +1619,34 @@ box-shadow:
 0 0 15px rgba(56,189,248,.25);
 
 }
+.nav-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
 .live-counter{
+  display:flex;
+  align-items:center;
+  gap:6px;
 
-  margin-left:20px;
+  padding:4px 10px;
 
-  padding:8px 15px;
-
-  border:1px solid rgba(255,255,255,.15);
-
+  border:1px solid rgba(56,189,248,.25);
   border-radius:999px;
 
-  background:rgba(255,255,255,.05);
+  background:rgba(56,189,248,.08);
 
-  backdrop-filter:blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  color:#38bdf8;
 
-  color:#00e5ff;
-
-  font-size:13px;
-
+  font-family:'Space Mono', monospace;
+  font-size:12px;
   font-weight:600;
 
-  display:flex;
+  white-space:nowrap;
+}
 
-  align-items:center;
-
-  gap:8px;
-
+#visitorCount{
+  color:#fff;
 }
 /* =========================
    COMMAND CENTER
