@@ -97,7 +97,7 @@
     <section class="project-section">
 
       <h2>Add Project</h2>
-
+<div id="projectsContainer"></div>
       <form id="projectForm">
 
         <input
@@ -212,6 +212,94 @@
 <section class="project-list">
   <h2>Achievements</h2>
   <div id="achievementsContainer"></div>
+</section>
+
+<!-- Skills Manager -->
+
+<section class="project-section">
+
+  <h2>Skills Manager</h2>
+
+  <form id="skillForm">
+
+    <input
+      type="text"
+      id="skillName"
+      placeholder="Skill Name"
+      required
+    >
+
+    <input
+      type="number"
+      id="skillPercentage"
+      placeholder="Percentage"
+      min="1"
+      max="100"
+      required
+    >
+
+    <input
+      type="text"
+      id="skillCategory"
+      placeholder="Category"
+    >
+
+    <button type="submit">
+      Add Skill
+    </button>
+
+  </form>
+
+  <p id="skillMessage"></p>
+
+</section>
+
+<section class="project-list">
+
+  <h2>Skills List</h2>
+
+  <div id="skillsContainer"></div>
+
+</section>
+
+<section class="project-section">
+
+  <h2>Career Timeline</h2>
+
+  <form id="careerForm">
+
+    <input
+      type="text"
+      id="careerTitle"
+      placeholder="Title"
+      required
+    >
+
+    <textarea
+      id="careerDescription"
+      placeholder="Description"
+      required
+    ></textarea>
+
+    <input
+      type="text"
+      id="careerYear"
+      placeholder="Year"
+      required
+    >
+
+    <input
+      type="text"
+      id="careerType"
+      placeholder="Type (Hackathon, Research, Internship...)"
+    >
+
+    <button type="submit">
+      Add Career Event
+    </button>
+
+  </form>
+
 </section>
 
   </main>

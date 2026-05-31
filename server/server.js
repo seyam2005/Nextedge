@@ -21,6 +21,11 @@ const visitorRoutes =
 require("./routes/visitorRoutes");
 const achievementRoutes =
 require("./routes/achievementRoutes");
+const careerRoutes =
+require("./routes/careerRoutes");
+const skillRoutes =
+require("./routes/skillRoutes");
+
 
 // Connect Database
 connectDB();
@@ -42,11 +47,15 @@ const client = new Groq({
   apiKey: process.env.GROQ_API_KEY,
 });
 app.use("/api/achievements", achievementRoutes);
-
+app.use("/api/career", careerRoutes);
 // Routes
 app.use("/api/contact", contactRoutes);
 
 app.use("/api/admin", adminRoutes);
+app.use(
+"/api/skills",
+skillRoutes
+);
 // Test Route
 app.get("/", (req, res) => {
   res.send("🚀 NextEdge Empire Backend Running");

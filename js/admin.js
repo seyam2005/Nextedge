@@ -199,21 +199,38 @@ async function loadAbout() {
   document.getElementById("aboutText").value = data.aboutText || "";
 }
 
-aboutForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
+if (aboutForm) {
 
-  const aboutTitle = document.getElementById("aboutTitle").value;
-  const aboutText = document.getElementById("aboutText").value;
+  aboutForm.addEventListener(
+    "submit",
+    async (e) => {
 
-  await fetch(`${API}/content`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ aboutTitle, aboutText })
-  });
+      e.preventDefault();
 
-  aboutMessage.innerText = "About Section Updated";
-});
+      const aboutTitle =
+        document.getElementById("aboutTitle").value;
 
+      const aboutText =
+        document.getElementById("aboutText").value;
+
+      await fetch(`${API}/content`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          aboutTitle,
+          aboutText
+        })
+      });
+
+      aboutMessage.innerText =
+        "About Section Updated";
+
+    }
+  );
+
+}
 /* =========================
    DASHBOARD STATS
 ========================= */
@@ -254,3 +271,241 @@ loadProjects();
 loadAchievements();
 loadAbout();
 loadDashboardStats();
+
+/* =========================
+   CAREER FORM
+========================= */
+const careerForm =
+document.getElementById(
+  "careerForm"
+);
+
+if(careerForm){
+
+careerForm.addEventListener(
+"submit",
+async(e)=>{
+
+e.preventDefault();
+
+const data = {
+
+title:
+document.getElementById(
+"careerTitle"
+).value,
+
+description:
+document.getElementById(
+"careerDescription"
+).value,
+
+year:
+document.getElementById(
+"careerYear"
+).value,
+
+type:
+document.getElementById(
+"careerType"
+).value
+
+};
+
+await fetch(
+"http://localhost:5001/api/career",
+{
+method:"POST",
+headers:{
+"Content-Type":
+"application/json"
+},
+body:JSON.stringify(data)
+}
+);
+
+alert(
+"Career Event Added"
+);
+
+careerForm.reset();
+
+loadCareer();
+
+});
+
+}
+
+async function loadCareer() {
+
+  try {
+
+    const response =
+      await fetch(
+        "http://localhost:5001/api/career"
+      );
+
+    const data =
+      await response.json();
+
+    console.log(data);
+
+  } catch (err) {
+
+    console.log(err);
+
+  }
+
+}
+loadCareer();
+
+/* =========================
+   LOAD SKILLS
+========================= */
+
+async function loadSkills(){
+
+  try{
+
+    const res =
+    await fetch(
+      `${API}/skills`
+    );
+
+    const skills =
+    await res.json();
+
+    const container =
+    document.getElementById(
+      "skillsContainer"
+    );
+
+    if(!container) return;
+
+    container.innerHTML = "";
+
+    skills.forEach(skill=>{
+
+      container.innerHTML += `
+
+      <div class="project-item">
+
+        <h3>
+          ${skill.name}
+        </h3>
+
+        <p>
+          ${skill.percentage}%
+        </p>
+
+        <small>
+          ${skill.category}
+        </small>
+
+        <br><br>
+
+        <button
+          class="delete-btn"
+          onclick="deleteSkill('${skill._id}')"
+        >
+          🗑 Delete
+        </button>
+
+      </div>
+
+      `;
+
+    });
+
+  }
+  catch(err){
+
+    console.log(err);
+
+  }
+
+}
+
+/* =========================
+   ADD SKILL
+========================= */
+
+const skillForm =
+document.getElementById(
+  "skillForm"
+);
+
+if(skillForm){
+
+skillForm.addEventListener(
+"submit",
+async(e)=>{
+
+e.preventDefault();
+
+const skillData = {
+
+name:
+document.getElementById(
+"skillName"
+).value,
+
+percentage:
+document.getElementById(
+"skillPercentage"
+).value,
+
+category:
+document.getElementById(
+"skillCategory"
+).value
+
+};
+
+await fetch(
+`${API}/skills`,
+{
+method:"POST",
+headers:{
+"Content-Type":
+"application/json"
+},
+body:JSON.stringify(skillData)
+}
+);
+
+document.getElementById(
+"skillMessage"
+).innerText =
+"Skill Added";
+
+skillForm.reset();
+
+loadSkills();
+
+});
+
+}
+
+/* =========================
+   DELETE SKILL
+========================= */
+
+async function deleteSkill(id){
+
+if(
+!confirm(
+"Delete this skill?"
+)
+) return;
+
+await fetch(
+`${API}/skills/${id}`,
+{
+method:"DELETE"
+}
+);
+
+loadSkills();
+
+}

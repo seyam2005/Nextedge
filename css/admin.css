@@ -393,3 +393,144 @@ textarea::placeholder{
   color:#60a5fa;
 
 }
+
+/* ==========================
+   DYNAMIC CAREER TIMELINE
+========================== */
+
+#careerTimeline{
+
+  max-width:900px;
+
+  margin:auto;
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:25px;
+}
+
+#careerTimeline .timeline-event{
+
+  background:rgba(255,255,255,.04);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  border-radius:20px;
+
+  padding:25px;
+
+  backdrop-filter:blur(15px);
+
+  transition:.3s;
+}
+
+#careerTimeline .timeline-event:hover{
+
+  transform:translateY(-5px);
+
+  border-color:rgba(59,130,246,.5);
+
+  box-shadow:
+  0 10px 30px
+  rgba(59,130,246,.15);
+}
+
+#careerTimeline .timeline-event time{
+
+  display:inline-block;
+
+  color:#60a5fa;
+
+  font-size:14px;
+
+  font-weight:600;
+
+  letter-spacing:2px;
+
+  margin-bottom:12px;
+}
+
+#careerTimeline .timeline-event h3{
+
+  font-size:24px;
+
+  margin-bottom:10px;
+
+  color:white;
+}
+
+#careerTimeline .timeline-event p{
+
+  color:#cbd5e1;
+
+  line-height:1.8;
+}
+/* =========================
+   CAREER TIMELINE ADMIN
+========================= */
+
+#careerForm{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  margin-top:15px;
+}
+
+#careerForm input,
+#careerForm textarea{
+
+  width:100%;
+  padding:15px;
+
+  background:rgba(255,255,255,.05);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  border-radius:12px;
+
+  color:white;
+
+  outline:none;
+
+  font-family:'Poppins',sans-serif;
+}
+
+#careerForm textarea{
+  min-height:120px;
+  resize:none;
+}
+
+#careerForm input::placeholder,
+#careerForm textarea::placeholder{
+  color:#94a3b8;
+}
+
+#careerForm button{
+
+  background:linear-gradient(
+    90deg,
+    #2563eb,
+    #3b82f6
+  );
+
+  border:none;
+
+  color:white;
+
+  padding:15px;
+
+  border-radius:12px;
+
+  cursor:pointer;
+
+  font-weight:600;
+
+  transition:.3s;
+}
+
+#careerForm button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 20px rgba(59,130,246,.4);
+}
