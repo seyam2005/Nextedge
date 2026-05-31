@@ -37,5 +37,12 @@ router.get("/", async (req, res) => {
   });
 
 });
+router.get("/stats", async (req, res) => {
+  const visitor = await Visitor.findOne();
+
+  res.json({
+    totalVisitors: visitor ? visitor.count : 0
+  });
+});
 
 module.exports = router;

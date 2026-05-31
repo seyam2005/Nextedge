@@ -262,3 +262,134 @@ body{
     padding:20px;
   }
 }
+/* =========================
+   FORMS
+========================= */
+
+#projectForm,
+#aboutForm,
+#achievementForm{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:15px;
+
+}
+
+#projectForm input,
+#projectForm textarea,
+
+#aboutForm input,
+#aboutForm textarea,
+
+#achievementForm input,
+#achievementForm textarea{
+
+  width:100%;
+
+  padding:15px;
+
+  border:none;
+
+  outline:none;
+
+  border-radius:12px;
+
+  background:rgba(255,255,255,.05);
+
+  color:white;
+
+  border:1px solid rgba(255,255,255,.08);
+
+  font-size:15px;
+
+  transition:.3s;
+
+}
+
+#projectForm input:focus,
+#projectForm textarea:focus,
+
+#aboutForm input:focus,
+#aboutForm textarea:focus,
+
+#achievementForm input:focus,
+#achievementForm textarea:focus{
+
+  border:1px solid #3b82f6;
+
+  box-shadow:
+  0 0 15px rgba(59,130,246,.3);
+
+}
+
+#projectForm textarea,
+#aboutForm textarea,
+#achievementForm textarea{
+
+  min-height:120px;
+
+  resize:none;
+
+}
+
+#projectForm button,
+#aboutForm button,
+#achievementForm button{
+
+  background:
+  linear-gradient(
+  90deg,
+  #2563eb,
+  #3b82f6
+  );
+
+  border:none;
+
+  color:white;
+
+  padding:15px;
+
+  border-radius:12px;
+
+  cursor:pointer;
+
+  font-weight:600;
+
+  transition:.3s;
+
+}
+
+#projectForm button:hover,
+#aboutForm button:hover,
+#achievementForm button:hover{
+
+  transform:translateY(-2px);
+
+  box-shadow:
+  0 10px 25px rgba(37,99,235,.35);
+
+}
+
+/* Placeholder */
+
+input::placeholder,
+textarea::placeholder{
+
+  color:#94a3b8;
+
+}
+
+/* Message */
+
+#projectMessage,
+#aboutMessage,
+#achievementMessage{
+
+  margin-top:10px;
+
+  color:#60a5fa;
+
+}

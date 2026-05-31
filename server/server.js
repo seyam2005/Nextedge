@@ -19,6 +19,8 @@ const contentRoutes =
 require("./routes/contentRoutes");
 const visitorRoutes =
 require("./routes/visitorRoutes");
+const achievementRoutes =
+require("./routes/achievementRoutes");
 
 // Connect Database
 connectDB();
@@ -33,17 +35,13 @@ app.use("/api/upload", uploadRoutes);
 app.use("/api/content", contentRoutes);
 const path = require("path");
 app.use("/uploads", express.static("uploads"));
-app.use(
-  "/uploads",
-  express.static(
-    path.join(__dirname, "uploads")
-  )
-);
+
 app.use("/api/visitors", visitorRoutes);
 // GROQ CLIENT
 const client = new Groq({
   apiKey: process.env.GROQ_API_KEY,
 });
+app.use("/api/achievements", achievementRoutes);
 
 // Routes
 app.use("/api/contact", contactRoutes);

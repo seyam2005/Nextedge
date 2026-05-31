@@ -164,17 +164,55 @@
 
 </section>
 
-    <!-- Project List -->
+  <form id="achievementForm">
 
-    <section class="project-list">
+  <input type="text"
+         id="achievementTitle"
+         placeholder="Achievement Title"
+         required>
 
-      <h2>Projects</h2>
+  <textarea
+         id="achievementDescription"
+         placeholder="Description"
+         required></textarea>
 
-      <div id="projectsContainer">
+  <input type="text"
+         id="achievementYear"
+         placeholder="Year"
+         required>
 
-      </div>
+  <input type="text"
+         id="achievementCategory"
+         placeholder="Category">
 
-    </section>
+  <input type="text"
+         id="achievementOrganizer"
+         placeholder="Organizer">
+
+  <input type="url"
+         id="achievementVerification"
+         placeholder="Verification Link">
+
+  <input type="file"
+         id="achievementImage"
+         accept="image/*">
+
+  <input type="file"
+         id="achievementCertificate"
+         accept=".pdf">
+
+  <button type="submit">
+    Add Achievement
+  </button>
+
+</form>
+
+<p id="achievementMessage"></p>
+<!-- Achievements List -->
+<section class="project-list">
+  <h2>Achievements</h2>
+  <div id="achievementsContainer"></div>
+</section>
 
   </main>
 
