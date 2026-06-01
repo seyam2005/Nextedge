@@ -95,3 +95,31 @@ router.delete("/:id", async (req, res) => {
 });
 
 module.exports = router;
+router.put(
+"/featured/:id",
+async(req,res)=>{
+
+try{
+
+const project =
+await Project.findById(
+req.params.id
+);
+
+project.featured =
+!project.featured;
+
+await project.save();
+
+res.json(project);
+
+}
+catch(err){
+
+res.status(500).json({
+message:"Error"
+});
+
+}
+
+});

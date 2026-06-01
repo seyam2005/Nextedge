@@ -254,6 +254,52 @@
 
 </section>
 
+<section class="project-section">
+
+  <h2>Skills Management</h2>
+
+  <form id="skillForm">
+
+    <input
+      type="text"
+      id="skillName"
+      placeholder="Skill Name"
+      required
+    >
+
+    <input
+      type="number"
+      id="skillPercentage"
+      placeholder="Percentage"
+      min="1"
+      max="100"
+      required
+    >
+
+    <input
+      type="text"
+      id="skillCategory"
+      placeholder="Category"
+    >
+
+    <button type="submit">
+      Add Skill
+    </button>
+
+  </form>
+
+  <p id="skillMessage"></p>
+
+</section>
+
+<section class="project-list">
+
+  <h2>Skills List</h2>
+
+  <div id="skillsContainer"></div>
+
+</section>
+
 <section class="project-list">
 
   <h2>Skills List</h2>
@@ -299,6 +345,125 @@
     </button>
 
   </form>
+
+</section>
+
+<section class="project-section">
+
+<h2>
+Research & Publications
+</h2>
+
+<form id="researchForm">
+
+<input
+type="text"
+id="researchTitle"
+placeholder="Paper Title"
+required
+>
+
+<textarea
+id="researchAbstract"
+placeholder="Abstract"
+required
+></textarea>
+
+<input
+type="text"
+id="researchAuthors"
+placeholder="Authors"
+>
+
+<input
+type="text"
+id="researchJournal"
+placeholder="Journal / Conference"
+>
+
+<input
+type="text"
+id="researchYear"
+placeholder="Year"
+>
+
+<input
+type="url"
+id="researchLink"
+placeholder="Paper Link"
+>
+
+<button type="submit">
+
+Add Publication
+
+</button>
+
+</form>
+
+<div id="researchContainer">
+
+</div>
+
+</section>
+
+<section class="project-section">
+
+<h2>
+Experience
+</h2>
+
+<form id="experienceForm">
+
+<input
+type="text"
+id="experienceTitle"
+placeholder="Position"
+required
+>
+
+<input
+type="text"
+id="experienceOrganization"
+placeholder="Organization"
+required
+>
+
+<textarea
+id="experienceDescription"
+placeholder="Description"
+required
+></textarea>
+
+<input
+type="text"
+id="experienceStart"
+placeholder="Start Date"
+>
+
+<input
+type="text"
+id="experienceEnd"
+placeholder="End Date"
+>
+
+<input
+type="text"
+id="experienceType"
+placeholder="Internship / Volunteer / RA"
+>
+
+<button type="submit">
+
+Add Experience
+
+</button>
+
+</form>
+
+<div id="experienceContainer">
+
+</div>
 
 </section>
 

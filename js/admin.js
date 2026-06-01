@@ -13,22 +13,20 @@ async function loadProjects() {
     const res = await fetch(`${API}/projects`);
     const projects = await res.json();
 
-    projectsContainer.innerHTML = "";
-    projectCount.innerText = projects.length;
-
-    projects.forEach(project => {
-      projectsContainer.innerHTML += `
-        <div class="project-item">
-          <h3>${project.title}</h3>
-          <p>${project.description}</p>
-          <small>${project.category}</small>
-          <br>
-          <button class="delete-btn" onclick="deleteProject('${project._id}')">
-            🗑 Delete
-          </button>
-        </div>
-      `;
-    });
+    projectsContainer.innerHTML = projects.map(project => `
+      <div class="project-item">
+        <h3>${project.title}</h3>
+        <p>${project.description}</p>
+        <small>${project.category}</small>
+        <br><br>
+        <button onclick="toggleFeatured('${project._id}')">
+          ${project.featured ? "⭐ Featured" : "☆ Feature"}
+        </button>
+        <button class="delete-btn" onclick="deleteProject('${project._id}')">
+          🗑 Delete
+        </button>
+      </div>
+    `).join("");
   } catch (err) {
     console.log(err);
   }
@@ -258,11 +256,27 @@ if (onlineCount) {
 /* =========================
    LOGOUT
 ========================= */
-const logoutBtn = document.getElementById("logoutBtn");
-logoutBtn.addEventListener("click", () => {
-  localStorage.removeItem("adminToken");
-  window.location.href = "login.html";
+const logoutBtn =
+document.getElementById(
+  "logoutBtn"
+);
+
+if(logoutBtn){
+
+logoutBtn.addEventListener(
+"click",
+()=>{
+
+localStorage.removeItem(
+"adminToken"
+);
+
+window.location.href =
+"login.html";
+
 });
+
+}
 
 /* =========================
    INIT — called ONCE each
@@ -508,4 +522,158 @@ method:"DELETE"
 
 loadSkills();
 
+}
+async function toggleFeatured(id){
+
+try{
+
+await fetch(
+`${API}/projects/featured/${id}`,
+{
+method:"PUT"
+}
+);
+
+loadProjects();
+
+}
+catch(err){
+
+console.log(err);
+
+}
+
+}
+const researchForm =
+document.getElementById(
+"researchForm"
+);
+
+if(researchForm){
+
+researchForm.addEventListener(
+"submit",
+async(e)=>{
+
+e.preventDefault();
+
+await fetch(
+`${API}/research`,
+{
+method:"POST",
+headers:{
+"Content-Type":
+"application/json"
+},
+body:JSON.stringify({
+
+title:
+document.getElementById(
+"researchTitle"
+).value,
+
+abstract:
+document.getElementById(
+"researchAbstract"
+).value,
+
+authors:
+document.getElementById(
+"researchAuthors"
+).value,
+
+journal:
+document.getElementById(
+"researchJournal"
+).value,
+
+year:
+document.getElementById(
+"researchYear"
+).value,
+
+paperLink:
+document.getElementById(
+"researchLink"
+).value
+
+})
+}
+);
+
+alert(
+"Publication Added"
+);
+
+researchForm.reset();
+
+loadResearch();
+
+});
+}
+
+const experienceForm =
+document.getElementById(
+"experienceForm"
+);
+
+if(experienceForm){
+
+experienceForm.addEventListener(
+"submit",
+async(e)=>{
+
+e.preventDefault();
+
+await fetch(
+`${API}/experience`,
+{
+method:"POST",
+headers:{
+"Content-Type":
+"application/json"
+},
+body:JSON.stringify({
+
+title:
+document.getElementById(
+"experienceTitle"
+).value,
+
+organization:
+document.getElementById(
+"experienceOrganization"
+).value,
+
+description:
+document.getElementById(
+"experienceDescription"
+).value,
+
+startDate:
+document.getElementById(
+"experienceStart"
+).value,
+
+endDate:
+document.getElementById(
+"experienceEnd"
+).value,
+
+type:
+document.getElementById(
+"experienceType"
+).value
+
+})
+}
+);
+
+alert(
+"Experience Added"
+);
+
+experienceForm.reset();
+
+});
 }

@@ -1,4 +1,3 @@
-
 const mongoose = require("mongoose");
 
 const projectSchema = new mongoose.Schema(
@@ -22,6 +21,12 @@ const projectSchema = new mongoose.Schema(
       type: String,
       default: "General",
     },
+
+    featured: {
+      type: Boolean,
+      default: false,
+    }
+
   },
   {
     timestamps: true,
