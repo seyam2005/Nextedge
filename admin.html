@@ -1,476 +1,177 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>NextEdge Admin</title>
-
   <link rel="stylesheet" href="css/admin.css">
-
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 </head>
-
 <body>
 
-  <!-- Background Glow -->
   <div class="bg-glow glow1"></div>
   <div class="bg-glow glow2"></div>
 
   <!-- Sidebar -->
   <aside class="sidebar">
-
-    <h2 class="logo">
-      Next<span>Edge</span>
-    </h2>
-
+    <h2 class="logo">Next<span>Edge</span></h2>
     <ul>
-
       <li>Dashboard</li>
-
       <li>Add Project</li>
-
       <li>Photography</li>
-
       <li>Videos</li>
-
       <li>Blogs</li>
-
       <li>Messages</li>
-
-      <li id="logoutBtn">
-        Logout
-      </li>
-
+      <li id="logoutBtn">Logout</li>
     </ul>
-
   </aside>
 
   <!-- Main -->
   <main class="main-content">
 
-    <!-- Top -->
     <div class="topbar">
-
-      <h1>
-        Admin Dashboard
-      </h1>
-
+      <h1>Admin Dashboard</h1>
     </div>
 
     <!-- Cards -->
-<section class="cards">
-
-  <div class="card">
-    <h3>📂 Projects</h3>
-    <p id="projectCount">0</p>
-  </div>
-
-  <div class="card">
-    <h3>👥 Visitors</h3>
-    <p id="visitorCount">0</p>
-  </div>
-
-  <div class="card">
-    <h3>💬 Messages</h3>
-    <p id="messageCount">0</p>
-  </div>
-
-  <div class="card">
-    <h3>🤖 AI Chats</h3>
-    <p id="chatCount">0</p>
-  </div>
-
-  <div class="card">
-    <h3>🟢 Online</h3>
-    <p id="onlineCount">247</p>
-  </div>
-
-</section>
+    <section class="cards">
+      <div class="card">
+        <h3>📂 Projects</h3>
+        <p id="projectCount">0</p>
+      </div>
+      <div class="card">
+        <h3>👥 Visitors</h3>
+        <p id="visitorCount">0</p>
+      </div>
+      <div class="card">
+        <h3>💬 Messages</h3>
+        <p id="messageCount">0</p>
+      </div>
+      <div class="card">
+        <h3>🤖 AI Chats</h3>
+        <p id="chatCount">0</p>
+      </div>
+      <div class="card">
+        <h3>🟢 Online</h3>
+        <p id="onlineCount">247</p>
+      </div>
+    </section>
 
     <!-- Add Project -->
-
     <section class="project-section">
-
       <h2>Add Project</h2>
-<div id="projectsContainer"></div>
       <form id="projectForm">
-
-        <input
-          type="text"
-          id="title"
-          placeholder="Project Title"
-          title="Project Title"
-          required
-        >
-
-        <textarea
-          id="description"
-          placeholder="Project Description"
-          title="Project Description"
-          required
-        ></textarea>
-
-        <input
-          type="file"
-          id="image"
-          accept="image/*"
-          title="Project Image">
-
-        <input
-          type="text"
-          id="category"
-          placeholder="Category"
-          title="Category"
-        >
-
-        <button type="submit">
-          Add Project
-        </button>
-
+        <input type="text" id="title" placeholder="Project Title" required>
+        <textarea id="description" placeholder="Project Description" required></textarea>
+        <input type="file" id="image" accept="image/*">
+        <input type="text" id="category" placeholder="Category">
+        <button type="submit">Add Project</button>
       </form>
-
       <p id="projectMessage"></p>
-
     </section>
+
+    <!-- Projects List -->
+    <section class="project-list">
+      <h2>Projects</h2>
+      <div id="projectsContainer"></div>
+    </section>
+
+    <!-- About Section -->
     <section class="project-section">
-
-  <h2>Edit About Section</h2>
-
-  <form id="aboutForm">
-
-    <input
-      type="text"
-      id="aboutTitle"
-      placeholder="About Title"
-    >
-
-    <textarea
-      id="aboutText"
-      placeholder="About Text"
-    ></textarea>
-
-    <button type="submit">
-      Save About Content
-    </button>
-
-  </form>
-
-  <p id="aboutMessage"></p>
-
-</section>
-
-  <form id="achievementForm">
-
-  <input type="text"
-         id="achievementTitle"
-         placeholder="Achievement Title"
-         required>
-
-  <textarea
-         id="achievementDescription"
-         placeholder="Description"
-         required></textarea>
-
-  <input type="text"
-         id="achievementYear"
-         placeholder="Year"
-         required>
-
-  <input type="text"
-         id="achievementCategory"
-         placeholder="Category">
-
-  <input type="text"
-         id="achievementOrganizer"
-         placeholder="Organizer">
-
-  <input type="url"
-         id="achievementVerification"
-         placeholder="Verification Link">
-
-  <input type="file"
-         id="achievementImage"
-         accept="image/*">
-
-  <input type="file"
-         id="achievementCertificate"
-         accept=".pdf">
-
-  <button type="submit">
-    Add Achievement
-  </button>
-
-</form>
-
-<p id="achievementMessage"></p>
-<!-- Achievements List -->
-<section class="project-list">
-  <h2>Achievements</h2>
-  <div id="achievementsContainer"></div>
-</section>
-
-<!-- Skills Manager -->
-
-<section class="project-section">
-
-  <h2>Skills Manager</h2>
-
-  <form id="skillForm">
-
-    <input
-      type="text"
-      id="skillName"
-      placeholder="Skill Name"
-      required
-    >
-
-    <input
-      type="number"
-      id="skillPercentage"
-      placeholder="Percentage"
-      min="1"
-      max="100"
-      required
-    >
-
-    <input
-      type="text"
-      id="skillCategory"
-      placeholder="Category"
-    >
-
-    <button type="submit">
-      Add Skill
-    </button>
-
-  </form>
-
-  <p id="skillMessage"></p>
-
-</section>
-
-<section class="project-section">
-
-  <h2>Skills Management</h2>
-
-  <form id="skillForm">
-
-    <input
-      type="text"
-      id="skillName"
-      placeholder="Skill Name"
-      required
-    >
-
-    <input
-      type="number"
-      id="skillPercentage"
-      placeholder="Percentage"
-      min="1"
-      max="100"
-      required
-    >
-
-    <input
-      type="text"
-      id="skillCategory"
-      placeholder="Category"
-    >
-
-    <button type="submit">
-      Add Skill
-    </button>
-
-  </form>
-
-  <p id="skillMessage"></p>
-
-</section>
-
-<section class="project-list">
-
-  <h2>Skills List</h2>
-
-  <div id="skillsContainer"></div>
-
-</section>
-
-<section class="project-list">
-
-  <h2>Skills List</h2>
-
-  <div id="skillsContainer"></div>
-
-</section>
-
-<section class="project-section">
-
-  <h2>Career Timeline</h2>
-
-  <form id="careerForm">
-
-    <input
-      type="text"
-      id="careerTitle"
-      placeholder="Title"
-      required
-    >
-
-    <textarea
-      id="careerDescription"
-      placeholder="Description"
-      required
-    ></textarea>
-
-    <input
-      type="text"
-      id="careerYear"
-      placeholder="Year"
-      required
-    >
-
-    <input
-      type="text"
-      id="careerType"
-      placeholder="Type (Hackathon, Research, Internship...)"
-    >
-
-    <button type="submit">
-      Add Career Event
-    </button>
-
-  </form>
-
-</section>
-
-<section class="project-section">
-
-<h2>
-Research & Publications
-</h2>
-
-<form id="researchForm">
-
-<input
-type="text"
-id="researchTitle"
-placeholder="Paper Title"
-required
->
-
-<textarea
-id="researchAbstract"
-placeholder="Abstract"
-required
-></textarea>
-
-<input
-type="text"
-id="researchAuthors"
-placeholder="Authors"
->
-
-<input
-type="text"
-id="researchJournal"
-placeholder="Journal / Conference"
->
-
-<input
-type="text"
-id="researchYear"
-placeholder="Year"
->
-
-<input
-type="url"
-id="researchLink"
-placeholder="Paper Link"
->
-
-<button type="submit">
-
-Add Publication
-
-</button>
-
-</form>
-
-<div id="researchContainer">
-
-</div>
-
-</section>
-
-<section class="project-section">
-
-<h2>
-Experience
-</h2>
-
-<form id="experienceForm">
-
-<input
-type="text"
-id="experienceTitle"
-placeholder="Position"
-required
->
-
-<input
-type="text"
-id="experienceOrganization"
-placeholder="Organization"
-required
->
-
-<textarea
-id="experienceDescription"
-placeholder="Description"
-required
-></textarea>
-
-<input
-type="text"
-id="experienceStart"
-placeholder="Start Date"
->
-
-<input
-type="text"
-id="experienceEnd"
-placeholder="End Date"
->
-
-<input
-type="text"
-id="experienceType"
-placeholder="Internship / Volunteer / RA"
->
-
-<button type="submit">
-
-Add Experience
-
-</button>
-
-</form>
-
-<div id="experienceContainer">
-
-</div>
-
-</section>
+      <h2>Edit About Section</h2>
+      <form id="aboutForm">
+        <input type="text" id="aboutTitle" placeholder="About Title">
+        <textarea id="aboutText" placeholder="About Text"></textarea>
+        <button type="submit">Save About Content</button>
+      </form>
+      <p id="aboutMessage"></p>
+    </section>
+
+    <!-- Add Achievement -->
+    <section class="project-section">
+      <h2>Add Achievement</h2>
+      <form id="achievementForm">
+        <input type="text" id="achievementTitle" placeholder="Achievement Title" required>
+        <textarea id="achievementDescription" placeholder="Description" required></textarea>
+        <input type="text" id="achievementYear" placeholder="Year" required>
+        <input type="text" id="achievementCategory" placeholder="Category">
+        <input type="text" id="achievementOrganizer" placeholder="Organizer">
+        <input type="url" id="achievementVerification" placeholder="Verification Link">
+        <input type="file" id="achievementImage" accept="image/*">
+        <input type="file" id="achievementCertificate" accept=".pdf">
+        <button type="submit">Add Achievement</button>
+      </form>
+      <p id="achievementMessage"></p>
+    </section>
+
+    <!-- Achievements List -->
+    <section class="project-list">
+      <h2>Achievements</h2>
+      <div id="achievementsContainer"></div>
+    </section>
+
+    <!-- Skills Manager -->
+    <section class="project-section">
+      <h2>Skills Manager</h2>
+      <form id="skillForm">
+        <input type="text" id="skillName" placeholder="Skill Name" required>
+        <input type="number" id="skillPercentage" placeholder="Percentage" min="1" max="100" required>
+        <input type="text" id="skillCategory" placeholder="Category">
+        <button type="submit">Add Skill</button>
+      </form>
+      <p id="skillMessage"></p>
+    </section>
+
+    <!-- Skills List -->
+    <section class="project-list">
+      <h2>Skills List</h2>
+      <div id="skillsContainer"></div>
+    </section>
+
+    <!-- Career Timeline -->
+    <section class="project-section">
+      <h2>Career Timeline</h2>
+      <form id="careerForm">
+        <input type="text" id="careerTitle" placeholder="Title" required>
+        <textarea id="careerDescription" placeholder="Description" required></textarea>
+        <input type="text" id="careerYear" placeholder="Year" required>
+        <input type="text" id="careerType" placeholder="Type (Hackathon, Research, Internship...)">
+        <button type="submit">Add Career Event</button>
+      </form>
+    </section>
+
+    <!-- Research & Publications -->
+    <section class="project-section">
+      <h2>Research & Publications</h2>
+      <form id="researchForm">
+        <input type="text" id="researchTitle" placeholder="Paper Title" required>
+        <textarea id="researchAbstract" placeholder="Abstract" required></textarea>
+        <input type="text" id="researchAuthors" placeholder="Authors">
+        <input type="text" id="researchJournal" placeholder="Journal / Conference">
+        <input type="text" id="researchYear" placeholder="Year">
+        <input type="url" id="researchLink" placeholder="Paper Link">
+        <button type="submit">Add Publication</button>
+      </form>
+      <div id="researchContainer"></div>
+    </section>
+
+    <!-- Experience -->
+    <section class="project-section">
+      <h2>Experience</h2>
+      <form id="experienceForm">
+        <input type="text" id="experienceTitle" placeholder="Position" required>
+        <input type="text" id="experienceOrganization" placeholder="Organization" required>
+        <textarea id="experienceDescription" placeholder="Description" required></textarea>
+        <input type="text" id="experienceStart" placeholder="Start Date">
+        <input type="text" id="experienceEnd" placeholder="End Date">
+        <input type="text" id="experienceType" placeholder="Internship / Volunteer / RA">
+        <button type="submit">Add Experience</button>
+      </form>
+      <div id="experienceContainer"></div>
+    </section>
 
   </main>
 
   <script src="js/admin.js"></script>
-
 </body>
-
 </html>

@@ -2227,3 +2227,70 @@ padding-left:20px;
 margin-bottom:10px;
 
 }
+
+
+/* =========================
+   PRINT / PDF STYLES
+========================= */
+@media print {
+
+  /* Hide everything except resume */
+  .navbar,
+  .mobile-menu,
+  .cursor,
+  .cursor-ring,
+  .mouse-glow,
+  .ai-orb,
+  .ai-panel,
+  footer,
+  .hero,
+  #particles,
+  .section-label,
+  .divider,
+  .btn-primary,
+  button {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  #resumeContainer {
+    max-width: 100%;
+    padding: 20px;
+    border: none;
+    background: white;
+    color: black;
+  }
+
+  #resumeContainer h1 {
+    font-size: 28px;
+    color: #000;
+  }
+
+  #resumeContainer h2 {
+    font-size: 18px;
+    color: #1e40af;
+    margin-top: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 4px;
+  }
+
+  #resumeContainer p,
+  #resumeContainer li {
+    color: #333;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  #resumeContainer a {
+    color: #1e40af;
+  }
+
+  .projects-section {
+    padding: 20px !important;
+  }
+
+}

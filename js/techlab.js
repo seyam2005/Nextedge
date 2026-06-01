@@ -1,36 +1,96 @@
-/* ── MOUSE GLOW ── */
-const mouseGlow = document.getElementById('mouseGlow') || document.querySelector('.mouse-glow');
-if (mouseGlow) {
-  document.addEventListener('mousemove', (e) => {
-    mouseGlow.style.left = e.clientX + 'px';
-    mouseGlow.style.top  = e.clientY + 'px';
-  });
-}
-/* ── CUSTOM CURSOR ── */
-const cursor = document.querySelector('.cursor');
-const ring   = document.querySelector('.cursor-ring');
+console.log("TECHLAB JS WORKING");
 
-if (cursor && ring) {
-  let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+let allProjects = [];
 
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    cursor.style.transform = `translate(${mouseX - 5}px, ${mouseY - 5}px)`;
-  });
+/* =========================
+   RENDER PROJECTS
+========================= */
+function renderProjects(projects) {
+  const container =
+    document.getElementById(
+      "techProjectsContainer"
+    );
 
-  function animateRing() {
-    ringX += (mouseX - ringX - 18) * 0.12;
-    ringY += (mouseY - ringY - 18) * 0.12;
-    ring.style.transform = `translate(${ringX}px, ${ringY}px)`;
-    requestAnimationFrame(animateRing);
+  if (!container) return;
+
+  if (projects.length === 0) {
+    container.innerHTML =
+      "<p class='loading-text'>No projects found.</p>";
+    return;
   }
-  animateRing();
 
-  document.querySelectorAll(
-    'a, button, .project-card, .gallery-item, .sport-card, .social-card, .ai-orb, .chip, .tool-grid div'
-  ).forEach(el => {
-    el.addEventListener('mouseenter', () => ring.classList.add('hovered'));
-    el.addEventListener('mouseleave', () => ring.classList.remove('hovered'));
-  });
+  container.innerHTML = projects.map(p => `
+    <div class="project-card">
+      ${
+        p.image
+        ? `<img
+             src="http://localhost:5001${p.image}"
+             alt="${p.title}"
+             class="project-image"
+           >`
+        : ""
+      }
+      <div class="project-info">
+        <h3>${p.title}</h3>
+        <p>${p.description}</p>
+        <div class="project-tag">
+          ${p.category || "PROJECT"}
+        </div>
+      </div>
+    </div>
+  `).join("");
 }
+
+/* =========================
+   LOAD PROJECTS FROM API
+========================= */
+async function loadTechProjects() {
+  try {
+    const res = await fetch(
+      "http://localhost:5001/api/projects"
+    );
+    const projects = await res.json();
+    allProjects = projects;
+    renderProjects(allProjects);
+
+  } catch (err) {
+    console.error("Failed to load projects:", err);
+    document
+      .getElementById("techProjectsContainer")
+      .innerHTML =
+      "<p class='loading-text'>Failed to load projects.</p>";
+  }
+}
+
+/* =========================
+   FILTER BUTTONS
+========================= */
+const filterBtns =
+  document.querySelectorAll(".filter-btn");
+
+filterBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    filterBtns.forEach(b =>
+      b.classList.remove("active")
+    );
+    btn.classList.add("active");
+
+    const category = btn.dataset.category;
+
+    if (category === "all") {
+      renderProjects(allProjects);
+    } else {
+      const filtered = allProjects.filter(
+        p => p.category === category
+      );
+      renderProjects(filtered);
+    }
+
+  });
+});
+
+/* =========================
+   INIT
+========================= */
+loadTechProjects();

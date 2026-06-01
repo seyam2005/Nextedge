@@ -1,471 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>
-NextEdge Tech Lab
-</title>
-
-<link rel="stylesheet"
-href="css/style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Lab | NextEdge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
 <body>
-      <!-- CUSTOM CURSOR -->
+
+  <div class="mouse-glow" id="mouseGlow"></div>
   <div class="cursor"></div>
   <div class="cursor-ring"></div>
-<!-- TECH LAB HERO -->
 
-<section class="hero">
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose">✕</button>
+    <a href="index.html">Home</a>
+    <a href="photography.html">Photography</a>
+    <a href="videography.html">Videography</a>
+    <a href="sports.html">Sports</a>
+    <a href="unilife.html">Uni Life</a>
+    <a href="techlab.html" class="active">Tech Lab</a>
+    <a href="achievements.html">Achievements</a>
+    <a href="research.html">Research</a>
+    <a href="resume.html">Resume</a>
+  </div>
 
-  <div class="hero-content">
+  <canvas id="particles"></canvas>
 
-    <div class="nav-badge">
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="nav-left">
+      <a href="index.html" class="logo">NextEdge</a>
+    </div>
+    <nav id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="photography.html">Photography</a>
+      <a href="videography.html">Videography</a>
+      <a href="sports.html">Sports</a>
+      <a href="unilife.html">Uni Life</a>
+      <a href="techlab.html" class="active">Tech Lab</a>
+      <a href="achievements.html">Achievements</a>
+      <a href="research.html">Research</a>
+      <a href="resume.html">Resume</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="darkToggle">🌙</button>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+      <button class="menu-btn" id="menuBtn">☰</button>
+    </div>
+  </header>
 
-      <span class="nav-badge-dot"></span>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="nav-badge">
+        <span class="nav-badge-dot"></span>
+        <span>Engineering • Development • Innovation</span>
+      </div>
+      <h1>Building Digital<br><em>Experiences</em></h1>
+      <p>
+        A collection of software projects, web applications,
+        AI experiments, and engineering solutions developed
+        throughout my journey.
+      </p>
+    </div>
+  </section>
 
-      <span>
-        Engineering • Development • Innovation
-      </span>
+  <!-- TECH STACK -->
+  <section class="projects-section">
+    <div class="section-label">// TECH STACK</div>
+    <h2 class="section-title">Technologies<br><em>I Use</em></h2>
+    <div class="divider"></div>
+    <div class="tool-grid">
+      <div>💻<br><strong>HTML</strong></div>
+      <div>🎨<br><strong>CSS</strong></div>
+      <div>⚡<br><strong>JavaScript</strong></div>
+      <div>🟢<br><strong>Node.js</strong></div>
+      <div>🍃<br><strong>MongoDB</strong></div>
+      <div>🔥<br><strong>GitHub</strong></div>
+    </div>
+  </section>
 
+  <!-- ENGINEERING PROJECTS — Dynamic from MongoDB -->
+  <section class="projects-section">
+    <div class="section-label">// FEATURED BUILDS</div>
+    <h2 class="section-title">Engineering<br><em>Projects</em></h2>
+    <div class="divider"></div>
+
+    <!-- Filter Buttons -->
+    <div class="project-filters">
+      <button class="filter-btn active" data-category="all">All</button>
+      <button class="filter-btn" data-category="Web Development">Web</button>
+      <button class="filter-btn" data-category="AI">AI</button>
+      <button class="filter-btn" data-category="Full Stack">Full Stack</button>
     </div>
 
-    <h1>
+    <div class="projects-grid" id="techProjectsContainer">
+      <p class="loading-text">Loading projects...</p>
+    </div>
+  </section>
 
-      Building Digital
-      <em>Experiences</em>
-
-    </h1>
-
-    <p>
-
-      A collection of software projects,
-      web applications, AI experiments,
-      and engineering solutions developed
-      throughout my journey.
-
+  <!-- GITHUB -->
+  <section class="projects-section">
+    <div class="section-label">// OPEN SOURCE</div>
+    <h2 class="section-title">GitHub<br><em>Presence</em></h2>
+    <div class="divider"></div>
+    <p class="github-description">
+      Explore my repositories, development journey, and open source work.
     </p>
-
-  </div>
-
-</section>
-<section class="projects-section">
-
-  <div class="section-label">
-
-    // TECH STACK
-
-  </div>
-
-  <h2 class="section-title">
-
-    Technologies
     <br>
-    <em>I Use</em>
-
-  </h2>
-
-  <div class="divider"></div>
-
-  <div class="tool-grid">
-
-    <div>
-
-      💻
-
-      <br>
-
-      <strong>HTML</strong>
-
+    <div style="text-align:center;">
+      <a href="https://github.com/seyam2005" target="_blank" rel="noopener" class="btn-primary">
+        Visit GitHub
+      </a>
     </div>
+  </section>
 
-    <div>
-
-      🎨
-
-      <br>
-
-      <strong>CSS</strong>
-
+  <!-- RESEARCH INTERESTS -->
+  <section class="projects-section">
+    <div class="section-label">// RESEARCH</div>
+    <h2 class="section-title">Research<br><em>Interests</em></h2>
+    <div class="divider"></div>
+    <div class="tool-grid">
+      <div>🤖<br><strong>Artificial Intelligence</strong></div>
+      <div>🧠<br><strong>Machine Learning</strong></div>
+      <div>🌐<br><strong>Web Technologies</strong></div>
+      <div>👁️<br><strong>Computer Vision</strong></div>
+      <div>📊<br><strong>Data Science</strong></div>
+      <div>⚡<br><strong>Human Computer Interaction</strong></div>
     </div>
+  </section>
 
-    <div>
-
-      ⚡
-
-      <br>
-
-      <strong>JavaScript</strong>
-
-    </div>
-
-    <div>
-
-      🟢
-
-      <br>
-
-      <strong>Node.js</strong>
-
-    </div>
-
-    <div>
-
-      🍃
-
-      <br>
-
-      <strong>MongoDB</strong>
-
-    </div>
-
-    <div>
-
-      🔥
-
-      <br>
-
-      <strong>GitHub</strong>
-
-    </div>
-
-  </div>
-
-</section>
-<!-- ENGINEERING PROJECTS -->
-
-<section class="projects-section">
-
-  <div class="section-label">
-
-    // FEATURED BUILDS
-
-  </div>
-
-  <h2 class="section-title">
-
-    Engineering
-    <br>
-    <em>Projects</em>
-
-  </h2>
-
-  <div class="divider"></div>
-
-  <div class="projects-grid">
-
-    <!-- PROJECT 1 -->
-
-    <div class="project-card">
-
-      <div class="project-info">
-
-        <h3>
-          NextEdge CMS
-        </h3>
-
-        <p>
-
-          Full content management
-          system with admin panel,
-          MongoDB integration and
-          image upload support.
-
-        </p>
-
-        <div class="project-tag">
-          NODE.JS
-        </div>
-
+  <!-- CURRENT FOCUS -->
+  <section class="projects-section">
+    <div class="section-label">// CURRENT FOCUS</div>
+    <h2 class="section-title">What I'm<br><em>Building</em></h2>
+    <div class="divider"></div>
+    <div class="timeline">
+      <div class="timeline-event">
+        <h3>NextEdge Platform</h3>
+        <p>Building a complete personal ecosystem combining portfolio, CMS, media management and AI.</p>
       </div>
-
-    </div>
-
-    <!-- PROJECT 2 -->
-
-    <div class="project-card">
-
-      <div class="project-info">
-
-        <h3>
-          Portfolio Platform
-        </h3>
-
-        <p>
-
-          Personal brand website
-          combining development,
-          photography and storytelling.
-
-        </p>
-
-        <div class="project-tag">
-          FULL STACK
-        </div>
-
+      <div class="timeline-event">
+        <h3>Full Stack Development</h3>
+        <p>Expanding expertise in backend architecture, APIs and databases.</p>
       </div>
-
-    </div>
-
-    <!-- PROJECT 3 -->
-
-    <div class="project-card">
-
-      <div class="project-info">
-
-        <h3>
-          AI Assistant
-        </h3>
-
-        <p>
-
-          Interactive assistant
-          integrated into the
-          NextEdge ecosystem.
-
-        </p>
-
-        <div class="project-tag">
-          AI
-        </div>
-
+      <div class="timeline-event">
+        <h3>AI Integration</h3>
+        <p>Exploring practical AI applications for web experiences and automation.</p>
       </div>
-
     </div>
+  </section>
 
+  <!-- FOOTER -->
+  <footer>
+    <span class="foot-logo">NextEdge</span>
+    <span class="foot-copy">© 2026 NextEdge | Powered by Shahriar Seyam</span>
+    <div class="foot-links">
+      <a href="photography.html">Photography</a>
+      <a href="videography.html">Videography</a>
+      <a href="sports.html">Sports</a>
+    </div>
+  </footer>
+
+  <!-- AI ORB -->
+  <div class="ai-orb" id="aiOrb">
+    <div class="orb-tooltip">NEXTEDGE CORE</div>
+    <span class="ai-orb-icon">✦</span>
   </div>
 
-</section>
-<section class="projects-section">
-
-  <div class="section-label">
-
-    // OPEN SOURCE
-
+  <div class="ai-panel" id="aiPanel">
+    <div class="ai-header">
+      <div class="ai-core">
+        <div class="ai-avatar">NE</div>
+        <div class="ai-header-info">
+          <h3>NextEdge Neural Core</h3>
+          <div class="ai-status">
+            <span class="ai-status-dot"></span>
+            Neural Core Online
+          </div>
+        </div>
+      </div>
+      <button id="closeAI">✕</button>
+    </div>
+    <div class="ai-chat" id="aiChat">
+      <div class="ai-quick">
+        <button class="quick-btn">/about</button>
+        <button class="quick-btn">/skills</button>
+        <button class="quick-btn">/projects</button>
+      </div>
+      <div class="msg bot">
+        Ask me about Shahriar's tech projects, skills, or engineering journey!
+      </div>
+    </div>
+    <div class="ai-input-area">
+      <input type="text" id="userInput" placeholder="Ask about tech...">
+      <button class="ai-send" id="sendBtn">➤</button>
+    </div>
   </div>
 
-  <h2 class="section-title">
-
-    GitHub
-    <br>
-    <em>Presence</em>
-
-  </h2>
-
-  <div class="divider"></div>
-
-  <p class="github-description">
-
-    Explore my repositories,
-    development journey,
-    and open source work.
-
-  </p>
-
-  <br>
-
-  <div style="
-      text-align:center;
-    ">
-
-    <a
-      href="https://github.com/seyam2005"
-      target="_blank"
-      rel="noopener"
-      class="btn-primary">
-
-      Visit GitHub
-
-    </a>
-
-  </div>
-
-</section>
-
-<!-- RESEARCH INTERESTS -->
-
-<section class="projects-section">
-
-  <div class="section-label">
-
-    // RESEARCH
-
-  </div>
-
-  <h2 class="section-title">
-
-    Research
-    <br>
-    <em>Interests</em>
-
-  </h2>
-
-  <div class="divider"></div>
-
-  <div class="tool-grid">
-
-    <div>
-
-      🤖
-
-      <br>
-
-      <strong>
-        Artificial Intelligence
-      </strong>
-
-    </div>
-
-    <div>
-
-      🧠
-
-      <br>
-
-      <strong>
-        Machine Learning
-      </strong>
-
-    </div>
-
-    <div>
-
-      🌐
-
-      <br>
-
-      <strong>
-        Web Technologies
-      </strong>
-
-    </div>
-
-    <div>
-
-      👁️
-
-      <br>
-
-      <strong>
-        Computer Vision
-      </strong>
-
-    </div>
-
-    <div>
-
-      📊
-
-      <br>
-
-      <strong>
-        Data Science
-      </strong>
-
-    </div>
-
-    <div>
-
-      ⚡
-
-      <br>
-
-      <strong>
-        Human Computer Interaction
-      </strong>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<section class="projects-section">
-
-  <div class="section-label">
-
-    // CURRENT FOCUS
-
-  </div>
-
-  <h2 class="section-title">
-
-    What I'm
-    <br>
-    <em>Building</em>
-
-  </h2>
-
-  <div class="divider"></div>
-
-  <div class="timeline">
-
-    <div class="timeline-event">
-
-      <h3>
-        NextEdge Platform
-      </h3>
-
-      <p>
-
-        Building a complete personal
-        ecosystem combining portfolio,
-        CMS, media management and AI.
-
-      </p>
-
-    </div>
-
-    <div class="timeline-event">
-
-      <h3>
-        Full Stack Development
-      </h3>
-
-      <p>
-
-        Expanding expertise in
-        backend architecture,
-        APIs and databases.
-
-      </p>
-
-    </div>
-
-    <div class="timeline-event">
-
-      <h3>
-        AI Integration
-      </h3>
-
-      <p>
-
-        Exploring practical AI
-        applications for web
-        experiences and automation.
-
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<h1>
-Tech Lab
-</h1>
-<script src="js/techlab.js"></script>
+  <audio id="aiSound" preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=interface-124464.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="js/main.js"></script>
+  <script src="js/ai-assistant.js"></script>
+  <script src="js/techlab.js"></script>
 
 </body>
-
 </html>
